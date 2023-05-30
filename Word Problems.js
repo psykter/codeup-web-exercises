@@ -1,0 +1,1 @@
+let pricePerDayDollars = 3
