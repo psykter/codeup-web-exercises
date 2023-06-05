@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Warm Ups</title>
+</head>
+<body>
+
+<script>
+    "use strict";
+    /* TODO
+
+    Write a function, makeUpperCase, that takes in an input and returns the input in uppercase if it is a string.
+    If the input is not a string, return false.
+
+    Examples:
+
+    makeUpperCase('cat') // returns 'CAT'
+    // what is the expected input? one input of any data type
+    // what is the output?  string | false
+    // create conditions for the input
+    // write the test cases out
+
+    makeUpperCase('DoG') // returns 'DOG'
+    makeUpperCase('CODEUP') // returns 'CODEUP'
+    makeUpperCase(54) // returns false
+    makeUpperCase(true) // returns false
+    makeUpperCase(null) // returns false
+
+    */
+
+    function makeUpperCase(input) {
+        if (typeof input === 'string') {
+            return input.toUpperCase(input)
+            } else {
+                return false
+            }
+    }
+
+
+    console.log(makeUpperCase('cat'));      // Output: 'CAT'
+    console.log(makeUpperCase('hello'));    // Output: 'HELLO'
+    console.log(makeUpperCase('WORLD'));    // Output: 'WORLD'
+    console.log(makeUpperCase(123));        // Output: false
+    console.log(makeUpperCase(true));       // Output: false
+
+
+</script>
+
+
+
+</body>
+</html>
