@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: unset:
+}
+
+.box1 {
+    background-color: chocolate;
+
+    /*height: 400px;*/
+    /*width: 100px;*/
+    /*padding: 150px;*/
+    /*boder: 2px solid black;*/
+
+    /*padding: 40px;*/
+    /*border: 2px solid black;*/
+    /*margin: 40px;*/
+
+    height: 25rem;
+    width: 25rem;
+}
+
+.box1>div {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    border: 12px solid #4b2205;
+}
+
+.box2 {
+    background-color: chocolate;
+    height: 40px;
+    margin: 5px 10px 50px 100px;
+}

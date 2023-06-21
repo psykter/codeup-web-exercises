@@ -1,0 +1,161 @@
+:root {
+    --primary: #800080;
+    --primary-light: #Cb00bC;
+    --border-radius: 10px;
+}
+
+body {
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    padding: unset;
+    margin: unset;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Lobster", cursive;
+    letter-spacing: 5px;
+}
+
+header {
+    padding: 20px;
+}
+
+}
+
+.fancy-header {
+    color: var(--primary);
+    text-align: center;
+    font-style: italic;
+}
+
+h2.fancy-header {
+    text-transform: lowercase;
+}
+
+#hero {
+    background-color: bisque;
+}
+
+.section-border {
+    background-color: unset;
+    border-bottom: 1px solid #000;
+}
+
+
+section {
+    background: #eee;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+section.hero-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8));
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.all-caps, .italic {
+    font-weight: 800;
+}
+
+h2.all-caps {
+    text-transform: uppercase;
+    color: chartreuse;
+}
+
+.italic {
+    font-style: italic;
+    color: red;
+}
+/*  the purpose of the id is to make easy to tag classes
+    although it can only be used once on the page.
+    #eee(white) #000(black)
+ */
+
+section>ul, section>ol {
+    padding-left: unset;
+}
+
+ul {
+    color: #000;
+}
+
+ul li:first-child, ol li:first-child {
+    color: var(--primary);
+}
+
+ul li:last-child, ol li:last-child {
+    color: chartreuse;
+}
+
+button {
+    cursor: pointer;
+    border: unset;
+}
+
+button.primary {
+    padding: 20px 30px;
+    background-color: green;
+    color: #fff;
+    border-radius: var(--border-radius);
+    transform: scale(1);
+    transition: all ease 0.2s;
+}
+
+button.primary:hover {
+    background-color: var(--primary-light);
+    transform: scale(1.5);
+}
+
+img {
+    display: inline-block;
+    width: calc(50% - 10px);
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: all ease .2s;
+    filter: grayscale(1);
+    overflow: hidden;
+}
+
+img:hover {
+    filter: grayscale(0);
+    object-position: 100%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+
+section table {
+    width: 100%;
+}
+
+section table td {
+    width: 50%;
+    padding: 0;
+}
+
+

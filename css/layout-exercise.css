@@ -1,0 +1,86 @@
+:root {
+    --primary: #979797;
+    --border-radius: 5px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+    text-transform: unset;
+    color: inherit;
+
+}
+
+.row {
+    max-width: 1100px;
+}
+
+header.container {
+    min-height: 80px;
+    background-color: #fff;
+    box-shadow: 3px -4px 15px -4px #000;
+    position: relative;
+}
+
+ul.d-flex {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    color: var(--primary);
+    font-width: 300;
+    padding: 10px 15px;
+    transition: all ease .2s;
+    border-radius: var(--border-radius);
+}
+
+.menu-item:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+
+.btn-primary {
+    padding: 10px 25px;
+    border: unset;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: var(--border-radius);
+}
+
+section.container.hero {
+    min-height: 80vh;
+    background-color: #e0e0e0;
+    padding: 40px 0;
+}
+
+.img-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--primary);
+    border-radius: var(--border-radius);
+}
+
+section.hero h1 {
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.subtitle {
+
+}
+
+.hero-text {
+
+}
+
+.hero-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: var(--border-radius);
+    background-color: var(--primary);
+}

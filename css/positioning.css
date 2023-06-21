@@ -1,0 +1,30 @@
+.parent-box {
+    height: 400px;
+    width: 400px;
+    background-color: #c4c4c4;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.child-box {
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.child-box:first-child {
+    position: relative;
+    z-index: 1;
+
+}
+
+.child-box:nth-child(2) {
+    position: absolute;
+    z-index: 1;
+
+}
