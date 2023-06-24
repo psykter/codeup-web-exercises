@@ -8,6 +8,20 @@
 <h1>Hi</h1>
 <script src="./js/functions.js">
 
+    function returnProduct(numbers) {
+        let product = 1;
+        for (let i = 0; i < numbers.length; i++) {
+            product *= numbers[i];
+        }
+        return product;
+    }
+
+    console.log(returnProduct([1, 2, 3]));  // Output: 6
+    console.log(returnProduct([3, 3, 3]));  // Output: 27
+    console.log(returnProduct([4, 1, 2]));  // Output: 8
+    console.log(returnProduct([4, 0, 2]));  // Output: 0
+    console.log(returnProduct([5, 3, 2]));  // Output: 30
+
 
 </script>
 </body>
