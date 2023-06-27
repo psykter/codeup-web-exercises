@@ -7,22 +7,118 @@
 <body>
 <script>
 
-    function returnProduct(numbers) {
-        let product = 1;
-        for (let i = 0; i < numbers.length; i++) {
-            product *= numbers[i];
-        }
-        return product;
-    }
+    // function returnProduct(numbers) {
+    //     let product = 1;
+    //     for (let i = 0; i < numbers.length; i++) {
+    //         product *= numbers[i];
+    //     }
+    //     return product;
+    // }
+    //
+    // console.log(returnProduct([1, 2, 3]));  // Output: 6
+    // console.log(returnProduct([3, 3, 3]));  // Output: 27
+    // console.log(returnProduct([4, 1, 2]));  // Output: 8
+    // console.log(returnProduct([4, 0, 2]));  // Output: 0
+    // console.log(returnProduct([5, 3, 2]));  // Output: 30
 
-    console.log(returnProduct([1, 2, 3]));  // Output: 6
-    console.log(returnProduct([3, 3, 3]));  // Output: 27
-    console.log(returnProduct([4, 1, 2]));  // Output: 8
-    console.log(returnProduct([4, 0, 2]));  // Output: 0
-    console.log(returnProduct([5, 3, 2]));  // Output: 30
+
+    Create a function, returnAvgSales, that takes in an array of sales data objects and returns the average of all
+    total items sold. Assume all elements in the input array are valid sales data objects with a totalItemsSold
+    property. If the array is empty, return 0. If the array has one element, return the value of the totalItemsSold.
+
+
+
+
+    // function returnAvgSales(salesData) {
+    //     return returnTotalSales(salesData) / salesData.length
+    // }
+
+    //     function returnAvgSales(salesData) {
+    //     const totalSales = salesData.reduce((sum, data) => sum + data.totalItemsSold, 0);
+    //     const averageSales = salesData.length === 0 ? 0 : totalSales / salesData.length;
+    //     return averageSales;
+    // }
+
+    // function returnAvgSales(salesData) {
+    //         let totalItemsSold = 0;
+    //         for (let i = 0; i < salesData.length; i++) {
+    //             totalItemsSold += salesData[i].totalItemsSold;
+    //         }
+    //         return totalItemsSold / salesData.length;
+    //     }
+
+        // console.log(returnAvgSales([
+        //     {month: 'January', totalItemsSold: 0},
+        //     {month: 'February', totalItemsSold: 3},
+        //     {month: 'March', totalItemsSold: 5},
+        // ])); // Output: 2.6666666666666665
+        // EXAMPLE...
+
+    // const salesData = [
+    //     {
+    //         month: 'January',
+    //         totalItemsSold: 0
+    //     },
+    //     {
+    //         month: 'February',
+    //         totalItemsSold: 5
+    //     },
+    //     {
+    //         month: 'March',
+    //         totalItemsSold: 2
+    //     },
+    //     {
+    //         month: 'April',
+    //         totalItemsSold: 10
+    //     },
+    //     {
+    //         month: 'May',
+    //         totalItemsSold: 30
+    //     }
+    // ];
+    //
+    // returnAvgSales(salesData) // returns 9.4
 
 
 
 </script>
 </body>
 </html>
+
+for (initialization; condition; increment/decrement) {
+// Code to be executed in each iteration
+}
+
+Initialization: This step is used to initialize a variable before the loop starts. It typically involves declaring
+a loop counter variable and assigning an initial value to it. For example, let i = 0; initializes the loop counter
+variable i with an initial value of 0.
+
+Condition: This step defines the condition that is checked before each iteration. If the condition evaluates to true,
+the loop continues executing. If it evaluates to false, the loop terminates. For example, i < 5 is a condition that
+checks if the loop counter i is less than 5.
+
+Increment/Decrement: This step updates the loop counter variable after each iteration. It modifies the value of the
+loop counter to ensure that the loop eventually terminates. For example, i++ increments the loop counter i by 1 after
+each iteration.
+
+Code Block: This is the block of code that is executed in each iteration of the loop. It contains the statements or
+actions you want to perform repeatedly.
+
+Example:
+
+const array = [1, 2, 3, 4, 5];
+
+for (let i = 0; i < array.length; i++) {
+console.log(array[i]);
+}
+
+The i variable is initialized with 0.
+
+The condition i < array.length checks if the loop counter i is less than the length of the array. As long as it's true,
+the loop continues.
+
+The code block console.log(array[i]); is executed in each iteration, printing the value of the array element at index i.
+
+After each iteration, the loop counter i is incremented by 1 (i++).
+
+As a result, the loop will iterate over the array from index 0 to the last index, printing each element to the console.

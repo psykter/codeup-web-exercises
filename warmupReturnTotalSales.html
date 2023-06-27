@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Create a function, returnTotalSales, that takes in an array of sales data objects and returns the sum of all-->
+<!--totalItemsSold properties. Assume all elements in the input array are valid sales data objects with a totalItemsSold-->
+<!--property.-->
+
+<!--EXAMPLE...-->
+
+<!--const salesData = [-->
+<!--{-->
+<!--month: 'January',-->
+<!--totalItemsSold: 0-->
+<!--},-->
+<!--{-->
+<!--month: 'February',-->
+<!--totalItemsSold: 5-->
+<!--},-->
+<!--{-->
+<!--month: 'March',-->
+<!--totalItemsSold: 2-->
+<!--},-->
+<!--{-->
+<!--month: 'April',-->
+<!--totalItemsSold: 10-->
+<!--},-->
+<!--{-->
+<!--month: 'May',-->
+<!--totalItemsSold: 30-->
+<!--}-->
+<!--];-->
+
+<!--returnTotalSales(salesData) // returns 47-->
+
+<!--function returnTotalSales(salesData) {-->
+<!--let totalSales = 0;-->
+<!--for (let i = 0; i < salesData.length; i++) {-->
+<!--totalSales += salesData[i].totalItemsSold;-->
+<!--}-->
+<!--return totalSales;-->
+<!--}-->
+
+
+<!--const salesData = [-->
+<!--{-->
+<!--month: 'January',-->
+<!--totalItemsSold: 0-->
+<!--},-->
+<!--{-->
+<!--month: 'February',-->
+<!--totalItemsSold: 5-->
+<!--},-->
+<!--{-->
+<!--month: 'March',-->
+<!--totalItemsSold: 2-->
+<!--},-->
+<!--{-->
+<!--month: 'April',-->
+<!--totalItemsSold: 10-->
+<!--},-->
+<!--{-->
+<!--month: 'May',-->
+<!--totalItemsSold: 30-->
+<!--}-->
+<!--];-->
+
+<!--console.log(salesData[0].totalItemsSold = ); // Output: 47-->
+
+<!--&lt;!&ndash;the problem is that if there were only 2 or 5 items in the array it wouldn't work.&ndash;&gt;-->
+
+<!--the other approach is to use a for loop or for each. for each is a method that takes a function as an argument.-->
+<!--also do while but not as common.-->
+
+
+function returnTotalSales(salesData) {
+    let sum = 0;
+    for (let i = 0; i< salesData,length; i += 1) {
+        sum += salesData[i].totalItemsSold;
+    }
+    return totalSales;
+}
+
+const salesData = [
+{
+month: 'January',
+totalItemsSold: 0
+},
+{
+month: 'February',
+totalItemsSold: 5
+},
+{
+month: 'March',
+totalItemsSold: 2
+},
+{
+month: 'April',
+totalItemsSold: 10
+},
+{
+month: 'May',
+totalItemsSold: 30
+}
+];
+
+returnTotalSales(salesData) // returns 47
+
+</body>
+</html>
+
+for practice write a for loop that will console.log each element in the array. for 5 items, 10 items, 20 items. and so on.
