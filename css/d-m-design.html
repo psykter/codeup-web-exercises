@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/codeup-design.css">
+    <link rel="stylesheet" href="desk2mobile-mods.css">
 
 </head>
 <body>
@@ -73,46 +73,50 @@
         </div>
 
     </hero>
-    <hr style="margin: 2rem 10rem">
-    <main class="container-fluid">
+    <div class="container-fluid d-none d-lg-block">
         <div class="row">
-            <div class="col-lg-8 ">
-                <h2 class="text-center">Selected Work</h2>
-
-                <img src="img/apple-ipad.jpg" height="426" width="640"/>
-                <img src="img/macbook.jpg" height="426" width="640"/>
-                <img src="img/man.jpg" height="426" width="640"/>
-                <img src="img/security.jpg" height="426" width="640"/>
-            </div>
             <div class="col">
-                <div class="d-flex align-items-center">
-                    <img src="img/mobile-phone.jpg" height="100" width="200" alt="Mobile Phone">
-                    <span class="ml-2">Sample text for Mobile Phone</span>
-                </div>
-                <div class="d-flex align-items-center">
-                    <img src="img/head.jpg" height="100" width="200" alt="Head">
-                    <span class="ml-2">Sample text for Head</span>
-                </div>
-                <div class="d-flex align-items-center">
-                    <img src="img/ipad.jpg" height="100" width="200" alt="iPad">
-                    <span class="ml-2">Sample text for iPad</span>
-                </div>
+                <hr style="margin: 2rem 5rem">
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="row">
+            <div class="col-8">
+                <p class="text-center">Selected Work</p>
+
+                <img src="img/apple-ipad.jpg" height="200" width="400"/>
+
+                <img src="img/macbook.jpg" height="200" width="400"/>
+
+                <img src="img/man.jpg" height="200" width="400"/>
+
+                <img src="img/security.jpg" height="200" width="400"/>
             </div>
 
+            <div class="col d-none d-lg-block text-uppercase">
+                <p class="text-center">The Last</p>
+                <article class="d-flex">
+                    <img src="img/mobile-phone.jpg" height="50" width="100"/>
+                    <h2>The Admin Bar absolute positioning</h2>
+                </article>
+                <article class="d-flex">
+                    <img src="img/head.jpg" height="50" width="100"/>
+                    <h2>Nibbler Awesome Website Testing</h2>
+                </article>
+                <article class="d-flex">
+                    <img src="img/ipad.jpg" height="50" width="100"/>
+                    <h2>How to get google to like you</h2>
+                </article>
+                <article>
+                    <p>Last Tweet</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto inventore labore numquam
+                        quis vel. Laborum natus nobis officia porro similique.</p>
+                </article>
+            </div>
         </div>
-        <section>
-            <!--    Sometimes a description of the pricing plans for the product-->
-        </section>
-        <article>
-            <!--    The description of the product/service/application-->
-        </article>
     </main>
-    <aside>
-        <!--  A secondary navigation element or ads are common in this place-->
-    </aside>
-    <footer>
-        <!--  Secondary links and copyright notices-->
-    </footer>
 </div>
 
 
