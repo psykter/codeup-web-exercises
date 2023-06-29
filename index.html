@@ -1,5 +1,3 @@
-on the previous script in the main container there appears to be an over lap of the content from both the columns onto each other.  Could you add some margin padding to correct the display?
-previous code:
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,22 +6,21 @@ previous code:
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="codeup-design.css">
-
+    <link rel="stylesheet" href="css/codeup-design.css">
 
 </head>
 <body>
 <div class="page-wrapper">
+    <!--        Navbar Section      -->
     <header class="container-fluid">
         <div class="row">
             <div class="col">
                 <nav style="font-family: abel;" class="navbar navbar-expand-lg">
 
-                    <img style="margin-right: 10px;" src="img/logo.png" height="50" width="50"/>
+                    <img style="margin-right: 10px;" src="img/logo.png" height="50" width="50" alt="logo"/>
                     <a style="font-size: 2rem; margin-right: 40px" class="d-none d-lg-block navbar-brand" href="#">codeup
                         design</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -52,6 +49,7 @@ previous code:
             </div>
         </div>
     </header>
+    <!--        Hero Section    -->
     <hero class="container">
 
         <div class="row text-uppercase mb-5">
@@ -80,84 +78,41 @@ previous code:
     <div class="container-fluid d-none d-lg-block">
         <div class="row">
             <div class="col">
-                <hr style="margin: 2rem 5rem">
+                <hr style="margin: 2rem 4rem">
             </div>
         </div>
     </div>
-
-    <style>
-        .image-margin {
-            padding: 10px;
-            background-color: #e6e6e6;
-            border-radius: 5px;
-        }
-    </style>
-
-    <style>
-        .image-margin {
-            padding: 10px;
-            background-color: #e6e6e6;
-            border-radius: 5px;
-            margin-right: -5px; /* Adjust the negative margin to reduce spacing */
-            margin-bottom: -5px; /* Adjust the negative margin to reduce spacing */
-        }
-    </style>
-
+    <!--        Main Section    -->
     <main class="container">
         <div class="row">
-            <div class="col-lg-6 text-center mb-4">
-                <p class="text-center">Selected Work</p>
-                <div class="row">
-                    <div class="col-md-6 mb-2">
-                        <img src="../img/apple-ipad.jpg" height="200" width="300" class="image-margin">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <img src="../img/macbook.jpg" height="200" width="300" class="image-margin">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <img src="../img/man.jpg" height="200" width="300" class="image-margin">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <img src="../img/security.jpg" height="200" width="300" class="image-margin">
-                    </div>
-                </div>
+            <div class="col-12 col-lg-8">
+                <p class="text-center">SELECTED WORK</p>
+                <img src="img/apple-ipad.jpg" height="200" width="400" alt="ipad"/>
+                <img src="img/macbook.jpg" height="200" width="400" alt="macbook"/>
+                <img src="img/man.jpg" height="200" width="400" alt="man image"/>
+                <img src="img/security.jpg" height="200" width="400" alt="security image"/>
+
             </div>
-        </div>
-    </main>
 
-
-
-
-
-    <div class="col-lg-6 text-uppercase">
+            <div class="col d-none d-lg-block text-uppercase">
                 <p class="text-center">The Last</p>
-                <div class="row">
-                    <div class="col-12 mb-4">
-                        <article class="d-flex">
-                            <img src="../img/mobile-phone.jpg" height="50" width="75"/>
-                            <h2>The Admin Bar absolute positioning</h2>
-                        </article>
-                    </div>
-                    <div class="col-12 mb-4">
-                        <article class="d-flex">
-                            <img src="../img/head.jpg" height="50" width="75"/>
-                            <h2>Nibbler Awesome Website Testing</h2>
-                        </article>
-                    </div>
-                    <div class="col-12 mb-4">
-                        <article class="d-flex">
-                            <img src="../img/ipad.jpg" height="50" width="75"/>
-                            <h2>How to get google to like you</h2>
-                        </article>
-                    </div>
-                    <div class="col-12 mb-4">
-                        <article>
-                            <p>Last Tweet</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto inventore labore numquam
-                                quis vel. Laborum natus nobis officia porro similique.</p>
-                        </article>
-                    </div>
-                </div>
+                <article class="d-flex">
+                    <img src="img/mobile-phone.jpg" height="50" width="80" alt="mobile-phone"/>
+                    <h2>The Admin Bar absolute positioning</h2>
+                </article>
+                <article class="d-flex">
+                    <img src="img/head.jpg" height="50" width="80" alt="head image"/>
+                    <h2>Nibbler Awesome Website Testing</h2>
+                </article>
+                <article class="d-flex">
+                    <img src="img/ipad.jpg" height="50" width="80" alt="ipad image"/>
+                    <h2>How to get google to like you</h2>
+                </article>
+                <article>
+                    <p>Last Tweet</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto inventore labore numquam
+                        quis vel. Laborum natus nobis officia porro similique.</p>
+                </article>
             </div>
         </div>
     </main>

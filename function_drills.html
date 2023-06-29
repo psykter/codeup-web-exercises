@@ -7,6 +7,79 @@
 <body>
 <script>
 
+
+    // function returnAdmins(users) {
+    //     const admins = [];
+    //     for (let i = 0; i < users.length; i += 1) {
+    //         if (users[i].isAdmin === true) {
+    //             admins.push(users[i]);
+    //         }
+    //     }
+    // }
+    //
+    // const users = [
+    //     {
+    //         username: 'fred123',
+    //         password: 'letmein',
+    //         email: 'fred123@email.com',
+    //         isAdmin: true
+    //     },
+    //     {
+    //         username: 'cindy123',
+    //         password: 'hello123',
+    //         email: 'cindy123@email.com',
+    //         isAdmin: false
+    //     },
+    //     {
+    //         username: 'kathy123',
+    //         password: 'letmein',
+    //         email: 'kathy123@email.com',
+    //         isAdmin: true
+    //     },
+    //     {
+    //         username: 'kyle123',
+    //         password: 'letmein',
+    //         email: 'kyle123@email.com',
+    //         isAdmin: false
+    //     }
+    // ];
+    //
+    // function returnAdmins(users) {
+    //     const admins = users.filter(user => user.isAdmin);
+    //     return admins;
+    // }
+    //
+    // const users = [
+    //     {
+    //         username: 'fred123',
+    //         password: 'letmein',
+    //         email: 'fred123@email.com',
+    //         isAdmin: true
+    //     },
+    //     {
+    //         username: 'cindy123',
+    //         password: 'hello123',
+    //         email: 'cindy123@email.com',
+    //         isAdmin: false
+    //     },
+    //     {
+    //         username: 'kathy123',
+    //         password: 'letmein',
+    //         email: 'kathy123@email.com',
+    //         isAdmin: true
+    //     },
+    //     {
+    //         username: 'kyle123',
+    //         password: 'letmein',
+    //         email: 'kyle123@email.com',
+    //         isAdmin: false
+    //     }
+    // ];
+    //
+    // const admins = returnAdmins(users);
+    // console.log(admins);
+
+
     // function returnProduct(numbers) {
     //     let product = 1;
     //     for (let i = 0; i < numbers.length; i++) {
@@ -22,9 +95,9 @@
     // console.log(returnProduct([5, 3, 2]));  // Output: 30
 
 
-    Create a function, returnAvgSales, that takes in an array of sales data objects and returns the average of all
-    total items sold. Assume all elements in the input array are valid sales data objects with a totalItemsSold
-    property. If the array is empty, return 0. If the array has one element, return the value of the totalItemsSold.
+    // Create a function, returnAvgSales, that takes in an array of sales data objects and returns the average of all
+    // total items sold. Assume all elements in the input array are valid sales data objects with a totalItemsSold
+    // property. If the array is empty, return 0. If the array has one element, return the value of the totalItemsSold.
 
 
 
@@ -32,13 +105,13 @@
     // function returnAvgSales(salesData) {
     //     return returnTotalSales(salesData) / salesData.length
     // }
-
+    //
     //     function returnAvgSales(salesData) {
     //     const totalSales = salesData.reduce((sum, data) => sum + data.totalItemsSold, 0);
     //     const averageSales = salesData.length === 0 ? 0 : totalSales / salesData.length;
     //     return averageSales;
     // }
-
+    //
     // function returnAvgSales(salesData) {
     //         let totalItemsSold = 0;
     //         for (let i = 0; i < salesData.length; i++) {
@@ -46,14 +119,14 @@
     //         }
     //         return totalItemsSold / salesData.length;
     //     }
-
-        // console.log(returnAvgSales([
-        //     {month: 'January', totalItemsSold: 0},
-        //     {month: 'February', totalItemsSold: 3},
-        //     {month: 'March', totalItemsSold: 5},
-        // ])); // Output: 2.6666666666666665
-        // EXAMPLE...
-
+    //
+    //     console.log(returnAvgSales([
+    //         {month: 'January', totalItemsSold: 0},
+    //         {month: 'February', totalItemsSold: 3},
+    //         {month: 'March', totalItemsSold: 5},
+    //     ])); // Output: 2.6666666666666665
+    //     EXAMPLE...
+    //
     // const salesData = [
     //     {
     //         month: 'January',
@@ -78,6 +151,182 @@
     // ];
     //
     // returnAvgSales(salesData) // returns 9.4
+
+    // Write a function that takes a neighborhood object and determines if it is desirable. A neighborhood is desirable.
+    //     If the median home price is less than 300000, crime rates are low, and the total rating of schools is at least 24.
+    // The function should return true if the neighborhood object is desireable and false otherwise.
+
+// example data...
+
+
+
+
+    const neighborhood1 = {
+        neighborhood: "Lovely Estates",
+        medianHomePrice: 280000,
+        pool: true,
+        tennis: false,
+        crimeRate: "low",
+        schools: 22
+    };
+
+    const neighborhood2 = {
+        neighborhood: "Luminous Estates",
+        medianHomePrice: 270000,
+        pool: true,
+        tennis: false,
+        crimeRate: "high",
+        schools: 24
+    }
+
+    const neighborhood3 = {
+        neighborhood: "Oak Mountain",
+        medianHomePrice: 290000,
+        pool: false,
+        tennis: false,
+        crimeRate: "low",
+        schools: 24
+    }
+
+    const neighborhood4 = {
+        neighborhood: "Ginormous Acres",
+        medianHomePrice: 350000,
+        pool: true,
+        tennis: true,
+        crimeRate: "low",
+        schools: 27
+    }
+
+
+
+    // function isDesirableNeighborhood(neighborhood) {
+    //     if (
+    //         console.log(neighborhood.medianHomePrice);
+    //         console.log(neighborhood.crimeRate);
+    //         console.log(neighborhood.schools);
+    //
+    //         const isRightPrice = neighborhood.medianHomePrice < 300000;
+    //         const isLowCrime = neighborhood.crimeRate === "low";
+    //         const isGoodSchools = neighborhood.schools >= 24;
+    //
+    //         const isDesirable = isRightPrice && isLowCrime && isGoodSchools;
+    //
+    //         // neighborhood.medianHomePrice < 300000 &&
+    //         // neighborhood.crimeRate === "low" &&
+    //         // neighborhood.schools >= 24
+    //     ) {
+    //         return isDesirable;
+    //         // return true;
+    //     }
+    // //     return false;
+    // // }
+    //
+    // console.log(isDesirableNeighborhood(neighborhood1)); // Output: true
+    // console.log(isDesirableNeighborhood(neighborhood2)); // Output: false
+    // console.log(isDesirableNeighborhood(neighborhood3)); // Output: true
+    // console.log(isDesirableNeighborhood(neighborhood4)); // Output: false
+
+    // function isDesirableNeighborhood(neighborhood) {
+    //     if (
+    //         console.log(neighborhood.medianHomePrice);
+    //     console.log(neighborhood.crimeRate);
+    //     console.log(neighborhood.schools);
+
+    // function isDesirableNeighborhood(neighborhood) {
+    //     if (neighborhood.medianHomePrice < 300_000_000) {
+    //         if (neighborhood.crimeRate === "low") {
+    //             if (neighborhood.schools >= 24) {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // *****************************************************************************
+    <!-- Learned new function about object deconstruction  -->
+    // function isDesirableNeighborhood({medianHomePrice, crimeRate, schools}) {
+    //     return medianHomePrice < 300_000_000 &&
+    //         crimeRate === "low" &&
+    //         schools >= 24;
+    //
+    //             }
+    //         }
+    //
+    //     const isRightPrice = neighborhood.medianHomePrice < 300000;
+    //     const isLowCrime = neighborhood.crimeRate === "low";
+    //     const isGoodSchools = neighborhood.schools >= 24;
+    //
+    //     const isDesirable = isRightPrice && isLowCrime && isGoodSchools;
+    //
+    // ) {
+    //         return isDesirable;
+    //     }
+    //
+    //     console.log(isDesirableNeighborhood(neighborhood1)); // Output: true
+    //     console.log(isDesirableNeighborhood(neighborhood2)); // Output: false
+    //     console.log(isDesirableNeighborhood(neighborhood3)); // Output: true
+    //     console.log(isDesirableNeighborhood(neighborhood4)
+    //     *****************************************************************************
+
+    // function isDesirable(neighborhood) {
+    //     return neighborhood.medianHomePrice < 300000 && neighborhood.crimeRate === "low" && neighborhood.schools >= 24;
+    // }
+    //
+    // def is_desirable_neighborhood(neighborhood):
+    // # Check median home price
+    // if neighborhood['median_home_price'] < 300000:
+    // # Check crime rates
+    // if neighborhood['crime_rate'] == 'low':
+    // # Check school rating
+    // if neighborhood['school_rating'] >= 24:
+    // return True
+    //
+    // return False
+    //
+    //
+    // const neighborhood1 = {
+    //     neighborhood: "Lovely Estates",
+    //     medianHomePrice: 280000,
+    //     pool: true,
+    //     tennis: false,
+    //     crimeRate: "low",
+    //     schools: 22,
+    // };
+    //
+    // console.log(isDesirableNeighborhood(neighborhood1)); // Output: false
+    //
+    // const neighborhood2 = {
+    //     neighborhood: "Luminous Estates",
+    //     medianHomePrice: 270000,
+    //     pool: true,
+    //     tennis: false,
+    //     crimeRate: "high",
+    //     schools: 24,
+    // };
+    //
+    // console.log(isDesirableNeighborhood(neighborhood2)); // Output: false
+    //
+    // const neighborhood3 = {
+    //     neighborhood: "Oak Mountain",
+    //     medianHomePrice: 290000,
+    //     pool: false,
+    //     tennis: false,
+    //     crimeRate: "low",
+    //     schools: 24,
+    // };
+    //
+    // console.log(isDesirableNeighborhood(neighborhood3)); // Output: true
+    //
+    // const neighborhood4 = {
+    //     neighborhood: "Ginormous Acres",
+    //     medianHomePrice: 350000,
+    //     pool: true,
+    //     tennis: true,
+    //     crimeRate: "low",
+    //     schools: 27,
+    // };
+    //
+    // console.log(isDesirableNeighborhood(neighborhood4)); // Output: false
 
 
 
@@ -122,3 +371,4 @@ The code block console.log(array[i]); is executed in each iteration, printing th
 After each iteration, the loop counter i is incremented by 1 (i++).
 
 As a result, the loop will iterate over the array from index 0 to the last index, printing each element to the console.
+
