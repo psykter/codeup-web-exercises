@@ -3,16 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery Exercises</title>
+
 </head>
+
+<!--1.  Create content in your HTML file using at least the following elements: h1, p, ul, li, div.-->
+
+<!--2.  Add several attributes to your elements; you will need both id and class attributes.-->
+
+<!--3.  Use jQuery to select an element by the id. Alert the contents of the element.-->
+
+<!--4.  Update the jQuery code to select and alert a different id.-->
+
+<!--5.  Use the same id on 2 elements. How does this change the jQuery selection?-->
+
+<!--6.  Remove the duplicate id. Each id should be unique on that page.-->
+
 <body>
+<h1 class="title">Class Names</h1>
+
+<div id="id-container" class="container">
+    <h2 class="title">IDs</h2>
+    <p id="paragraph1">This is paragraph 1.</p>
+    <p id="paragraph2">This is paragraph 2.</p>
+</div>
+<div class="important">
+    <h3>NOTICE</h3>
+    <p>This paragraph is important!</p>
+</div>
+<div class="not-important">
+    <h2>Lorem Ipsum</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, alias asperiores aspernatur atque
+        <span class="important">consequatur</span>, consequuntur cumque cupiditate dolorum ea earum eius eligendi.
+    </p>
+</div>
+<h2 class="title">Class Names</h2>
+<p class="highlight">This paragraph has the "highlight" class.</p>
+<p class="codeup">This paragraph has the "highlight" class.</p>
+<p>This paragraph does not have any class.</p>
+
+<h2 class="title">HTML Elements</h2>
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
 
 
-<script>
-  $(function() {
-    alert( 'The DOM has finished loading!' );
-  });
-</script>
+<!--<script>-->
+<!--  $(function() {-->
+<!--    alert( 'The DOM has finished loading!' );-->
+<!--  });-->
+<!--</script>-->
+
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="jquery_exercises.js"></script>
 </body>
 </html>
