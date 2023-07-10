@@ -29,5 +29,9 @@ $(function() {
 
     $("p").dblclick(function() {
         $(this).css("font-size", "18px");
+
+        $('#textfield').keyup(function() {
+            alert('a key was released!');
+        });
     });
 });
