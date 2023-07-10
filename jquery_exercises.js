@@ -1,17 +1,46 @@
-$(function() {
-    $(".container").css("background-color", "red");
+$('h1').on('cllick', (e) => {
+    $(e.target).css('background', 'blue');
+});
 
+// $('p').on(ondblclick(e) => {
+//     #(e.targeet).css('font-size', '18px');
+// })
+
+$('li').on('mouseenter', (e) => {
+    $(e.target).css('color', 'red');
+}
+$('li').on('mouseleave', (e) => {
+    $(e.target).css('color', 'black');
+}
+
+$(function() {
+    $("li").hover(
+        function() {
+            $(this).css("color", "red");
+        },
+        function() {
+            $(this).css("color", "black");
+        }
+    );
+});
+
+$(function() {
+    $("p").dblclick(function() {
+        $(this).css("font-size", "18px");
+    });
+});
+
+$(function() {
     $(".title").css("color", "purple");
 
-// $("*")
-    //     .css("outline", "1px solid lightblue")
-    //     .css("font-weight", "bold");
-
-    $("body").css("background-color", "lightgrey");
+    $("h1").click(function() {
+        $(this).css("background-color", "lightblue");
+    });
 
     $("li").css("color", "red");
-
 });
+
+
 
 
 

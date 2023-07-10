@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Runners</title>
+
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Runners</title>
+</head>
+<body>
+<h1>Top Runners Exercise</h1>
+
+<h2>Exercise Description:</h2>
+<p>You are given an array of runner objects, where each object represents a runner with properties name, age, and lapTimes (in seconds). Write a function called getTopRunners that takes the runners array as input and returns an array of top runners. A runner is considered top if their average lap time is 50 seconds or faster. If there are no top runners in the input array, the function should return an empty array.</p>
+
+<h2>Hint:</h2>
+<p>You might want to create a function called calculateLapTimeAverage that takes in an array of numbers and returns the average.</p>
+
+<h2>Input:</h2>
+<pre>
+const runners = [
+  { name: "Alice", age: 25, lapTimes: [50.5, 45.2, 48.8, 47.1] },
+  { name: "Bob", age: 28, lapTimes: [55.2, 50.7, 53.3, 52.9] },
+  { name: "Charlie", age: 24, lapTimes: [48.9, 46.3, 50.1, 49.5] },
+  { name: "David", age: 27, lapTimes: [51.4, 50.2, 49.8, 52.3] },
+  { name: "Eve", age: 26, lapTimes: [47.7, 45.9, 46.6, 48.3] },
+];
+  </pre>
+
+<h2>Expected Output:</h2>
+<pre>
+[
+  { name: 'Alice', age: 25, lapTimes: [50.5, 45.2, 48.8, 47.1] },
+  { name: 'Charlie', age: 24, lapTimes: [48.9, 46.3, 50.1, 49.5] },
+  { name: 'Eve', age: 26, lapTimes: [47.7, 45.9, 46.6, 48.3] }
+]
+  </pre>
+
+<h2>Bonus Output:</h2>
+<pre>
+[
+  { name: "Alice", age: 18 },
+  { name: "Charlie", age: 19 },
+  { name: "Eve", age: 17 }
+]
+  </pre>
+</body>
+</html>
+
+<script>
+// You are given an array of runner objects, where each object represents a
+// runner with properties name, age, and lapTimes (in seconds). Write a
+// function called getTopRunners that takes the runners array as input and
+// returns an array of top runners. A runner is considered top if their
+// average lap time is 50 seconds or faster. If there are no top runners in
+// the input array, the function should return an empty array
+
+
+// HINT: You might want to create a function called calculateLapTimeAverage
+// that takes in an array of numbers and returns the average
+
+
+// Input:
+const runners = [
+{ name: "Alice", age: 25, lapTimes: [50.5, 45.2, 48.8, 47.1] },
+{ name: "Bob", age: 28, lapTimes: [55.2, 50.7, 53.3, 52.9] },
+{ name: "Charlie", age: 24, lapTimes: [48.9, 46.3, 50.1, 49.5] },
+{ name: "David", age: 27, lapTimes: [51.4, 50.2, 49.8, 52.3] },
+{ name: "Eve", age: 26, lapTimes: [47.7, 45.9, 46.6, 48.3] },
+];
+
+function getTopRunners(runnersArray) {
+    // declare topRunners array
+    let topRunners = [];
+
+    // loop through runnersArray
+    for(let runner of runnersArray) {
+        // check if top runner
+        // if true, push to topRunners array
+        if(calculateLapTimeAverage(runner.lapTimes) <= 50.0) {
+            topRunners.push(runner);
+        }
+        // if not, do nothing
+    }
+
+    // return topRunners array
+    // if there are no top runners, return an empty array
+    return topRunners;
+}
+function calculateLapTimeAverage(lapTimesArray) {
+    // declare sum variable
+    let sum = 0;
+    let count = 0;
+    // loop through lapTimesArray
+    for(let lapTime of lapTimesArray) {
+        // add each lap time to sum
+        sum += lapTime;
+        count++;
+    }
+
+    // return sum divided by length of lapTimesArray
+    return total / count;
+}
+colsole.log(getTopRunners(runners));
+
+// Expected Output:
+[
+{ name: 'Alice', age: 25, lapTimes: [50.5, 45.2, 48.8, 47.1] },
+{ name: 'Charlie', age: 24, lapTimes: [48.9, 46.3, 50.1, 49.5] },
+{ name: 'Eve', age: 26, lapTimes: [47.7, 45.9, 46.6, 48.3] }
+]
+
+
+
+// BONUS: Each runner in the resulting array should be represented as an
+// object containing only the name and age properties.
+
+
+// Expected Bonus Output:
+[
+{ name: "Alice", age: 18 },
+{ name: "Charlie", age: 19 },
+{ name: "Eve", age: 17 }
+]
+
+</script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+<script src="top-runners.js"></script>
+</body>
+</html>
