@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DOM: Query and Modify</title>
+</head>
+<body>
+
+<h1 id="main-header">Hello World!</h1>
+<ul>
+  <li data-dbid="1">Item 1</li>
+  <li data-dbid="2">Item 2</li>
+  <li data-dbid="3">Item 3</li>
+  <li data-dbid="4">Item 4</li>
+  <li data-dbid="5">Item 5</li>
+</ul>
+<h2 id="sub-header">Hello Again.</h2>
+<p class="sub-paragraph">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+  culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<!--
+    1. change main header
+    2. change sub-header
+    3. change list
+    4. change paragraph
+-->
+
+<button id="change-main-header-btn">Change Main Header</button>
+<button id="change-sub-header-btn">Change Sub-Header</button>
+<button id="change-list-btn">Change List</button>
+<button id="change-para-btn">Change Paragraph</button>
+
+<script>
+  (function () {
+    "use strict";
+
+    // variables...
+
+    const changeMainBtn = document.getElementById('change-main-header-btn');
+    const changeSubHeaderBtn = document.getElementById('change-sub-header-btn');
+    const changeListBtn = document.getElementById('change-list-btn');
+    const changeParaBtn = document.getElementById('change-para-btn');
+
+
+    // functions...
+
+    function changeMainHeader() {
+      const mainHeader = document.getElementById('main-header');
+      mainHeader.innerHTML = "JavaScript is Cool";
+    }
+
+    function changeSubHeader() {
+      const subHeader = document.getElementById('sub-header');
+      subHeader.style.color = 'blue';
+    }
+
+    function changeList() {
+      const listItems = document.getElementsByTagName("li");
+      for (let i = 0; i < listItems.length; i += 1) {
+        if (i % 2 === 0) {
+          listItems[i].style.color = 'lime';
+        }
+      }
+      document.querySelector('[data-dbid="1"]').style.color = 'blue';
+    }
+
+    function changePara() {
+      const subParagraphs = document.getElementsByClassName('sub-paragraph');
+      subParagraphs[0].innerText = 'Mission Accomplished!';
+    }
+
+    // add event listeners...
+
+    changeMainBtn.addEventListener('click', changeMainHeader);
+    changeSubHeaderBtn.addEventListener('click', changeSubHeader);
+    changeListBtn.addEventListener('click', changeList);
+    changeParaBtn.addEventListener('click', changePara);
+
+  })();
+</script>
+</body>
+</html>
