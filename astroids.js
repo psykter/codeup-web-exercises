@@ -8,7 +8,7 @@ let currentLives = totalLives; // Current remaining lives
 let isGameOver = false; // Track if the game is over
 
 function preload() {
-    starshipImage = loadImage('starship.png');
+    starshipImage = loadImage('img/starship.png');
 }
 
 function setup() {
@@ -52,7 +52,7 @@ function draw() {
     bullets = bullets.filter(bullet => !bullet.isDestroyed);
 
     // Calculate the reduced size of the starship image
-    let reducedSize = starshipImage.width / 15;
+    let reducedSize = starshipImage.width / 12;
 
     // Set the rotation angle based on key presses
     if (keyIsDown(65)) { // "a" key
@@ -70,8 +70,8 @@ function draw() {
     pop();
 
     // Display the current number of lives at the top center of the screen
-    fill(255);
-    textSize(24);
+    fill(4, 51, 255);
+    textSize(48);
     textAlign(CENTER, TOP);
     text(`Lives: ${currentLives}`, width / 2, 10);
 
@@ -129,7 +129,7 @@ class Asteroid {
 
     display() {
         if (!this.isDestroyed && !this.isExploded) {
-            fill(255);
+            fill(170, 121, 66);
             ellipse(this.x, this.y, this.size);
         }
         if (this.isExploded) {
