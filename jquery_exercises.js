@@ -1,17 +1,3 @@
-$('h1').on('cllick', (e) => {
-    $(e.target).css('background', 'blue');
-});
-
-// $('p').on(ondblclick(e) => {
-//     #(e.targeet).css('font-size', '18px');
-// })
-
-$('li').on('mouseenter', (e) => {
-    $(e.target).css('color', 'red');
-}
-$('li').on('mouseleave', (e) => {
-    $(e.target).css('color', 'black');
-}
 
 $(function() {
     $("li").hover(

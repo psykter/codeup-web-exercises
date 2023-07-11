@@ -4,26 +4,31 @@
   <title>Konami Code</title>
 </head>
 <body>
-<p>Enter Your Gamer Tag:</p>
-
-
 <h1>Konami Code</h1>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   "use strict";
 
+  const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+  let konamiIndex = 0;
 
-
-  $(document).keyup(function(event){
-    console.log(event.keyCode);
+  $(document).keyup(function(event) {
+    if (event.keyCode === konamiCode[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === konamiCode.length) {
+        konamiSuccess();
+        konamiIndex = 0;
+      }
+    } else {
+      konamiIndex = 0;
+    }
   });
-</script>
-<p>Enter Game:</p>
-<form>
-  <input type="text" id="textfield" name="textfield" placeholder="Type Here"/>
-</form>
 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-<script src="/js/jquery.js"></script>
+  function konamiSuccess() {
+    // Display the updated alert message
+    alert('You have added 30 lives!');
+  }
+</script>
 </body>
 </html>

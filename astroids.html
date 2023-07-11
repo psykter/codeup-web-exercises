@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Astroids</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossOrigin="anonymous"></script>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="astroids.js"></script>
+</head>
+<body>
+
+<script>
+    "use strict";
+
+    let asteroids = [];
+    let lives = 0;
+    let spaceship;
+
+    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+    let konamiIndex = 0;
+
+    function preload() {
+        spaceship = loadImage('playerShip1_blue.png');
+    }
+
+    function setup() {
+        createCanvas(windowWidth, windowHeight);
+
+        // Create 10 random asteroids
+        for (let i = 0; i < 10; i++) {
+            asteroids.push(new Asteroid());
+        }
+    }
+
+    function draw() {
+        background(0);
+
+        // Update and display asteroids
+        for (let asteroid of asteroids) {
+            asteroid.update();
+            asteroid.display();
+        }
+
+        // Display the spaceship at the center of the canvas
+        image(spaceship, (width - spaceship.width) / 2, (height - spaceship.height) / 2);
+    }
+
+    // ... (rest of the code)
+
+    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
+    let konamiIndex = 0;
+
+    $(document).keyup(function (event) {
+        if (event.keyCode === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                konamiSuccess();
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+
+    function konamiSuccess() {
+        // Display the updated alert message
+        alert('You have added 30 lives!');
+    }
+
+    <script src="jquery.js"></script>
+</body>
+</html>
+

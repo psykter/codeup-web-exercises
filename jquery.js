@@ -1,4 +1,4 @@
-$(function() {
+$(()=> {
     $(".container").css("background-color", "red");
 
     $(".title").css("color", "purple");
