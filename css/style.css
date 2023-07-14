@@ -12,3 +12,27 @@ comment
 .invisible {
     visibility: hidden;
 }
+p,
+dt {
+    font-weight: bold;
+}
+
+dl,
+dd {
+    font-size: 0.9rem;
+}
+
+dd {
+    margin-bottom: 1em;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/*Showing how this will change how JS interacts with our Node element*/
+article.css>div {
+    height: 240px;
+    width: 240px;
+}

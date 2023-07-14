@@ -1,0 +1,5344 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+  <link rel="canonical" href="http://java.fulgentcorp.com/jquery/ajax/requests-and-responses/">
+
+  <link rel="icon" href="../../../img/favicon.ico">
+  <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+
+
+
+  <title>Requests and Responses - Codeup Java</title>
+
+
+
+  <link rel="stylesheet" href="../../../assets/stylesheets/main.975780f9.min.css">
+
+
+  <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+
+
+
+  <meta name="theme-color" content="#8bc34b">
+
+
+
+
+
+
+
+
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+  <style>:root{--md-text-font:"Open Sans";--md-code-font:"IBM Plex Mono"}</style>
+
+
+
+  <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+
+
+
+
+
+
+  <link rel="stylesheet" href="../../../assets/stylesheets/custom.9097afc2.min.css">
+
+</head>
+
+
+
+
+
+
+
+<body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="deep-purple">
+
+
+
+<input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+<input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+
+
+  <a href="#ajax-request" class="md-skip">
+    Skip to content
+  </a>
+
+</div>
+<div data-md-component="announce">
+
+</div>
+
+
+
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Codeup Java" class="md-header__button md-logo" aria-label="Codeup Java" data-md-component="logo">
+
+      <img src="../../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Codeup Java
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+
+              Requests and Responses
+
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <label class="md-header__button md-icon" for="__search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+    </label>
+    <div class="md-search" data-md-component="search" role="dialog">
+      <label class="md-search__overlay" for="__search"></label>
+      <div class="md-search__inner" role="search">
+        <form class="md-search__form" name="search">
+          <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+          <label class="md-search__icon md-icon" for="__search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </label>
+          <nav class="md-search__options" aria-label="Search">
+
+            <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+            </button>
+          </nav>
+
+        </form>
+        <div class="md-search__output">
+          <div class="md-search__scrollwrap" data-md-scrollfix>
+            <div class="md-search-result" data-md-component="search-result">
+              <div class="md-search-result__meta">
+                Initializing search
+              </div>
+              <ol class="md-search-result__list"></ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </nav>
+
+</header>
+
+<div class="md-container" data-md-component="container">
+
+
+
+
+
+  <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../.." class="md-tabs__link">
+            Introduction
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../html-css/" class="md-tabs__link">
+            HTML and CSS
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../javascript-i/" class="md-tabs__link">
+            JavaScript I
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../" class="md-tabs__link md-tabs__link--active">
+            jQuery
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../javascript-ii/" class="md-tabs__link">
+            JavaScript II
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../java-i/" class="md-tabs__link">
+            Java I
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../java-ii/" class="md-tabs__link">
+            Java II
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../mysql/" class="md-tabs__link">
+            MySQL
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../java-iii/" class="md-tabs__link">
+            Java III
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../spring/" class="md-tabs__link">
+            Spring
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../capstone/" class="md-tabs__link">
+            Capstone Project
+          </a>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li class="md-tabs__item">
+          <a href="../../../appendix/" class="md-tabs__link">
+            Appendix
+          </a>
+        </li>
+
+
+
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <main class="md-main" data-md-component="main">
+    <div class="md-main__inner md-grid">
+
+
+
+      <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+        <div class="md-sidebar__scrollwrap">
+          <div class="md-sidebar__inner">
+
+
+
+
+
+            <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+              <label class="md-nav__title" for="__drawer">
+                <a href="../../.." title="Codeup Java" class="md-nav__button md-logo" aria-label="Codeup Java" data-md-component="logo">
+
+                  <img src="../../../img/logo.png" alt="logo">
+
+                </a>
+                Codeup Java
+              </label>
+
+              <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_1">
+                    Introduction
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Introduction" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_1">
+                      <span class="md-nav__icon md-icon"></span>
+                      Introduction
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../.." class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../toc/" class="md-nav__link">
+                          Table of Contents
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_2">
+                    HTML and CSS
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="HTML and CSS" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_2">
+                      <span class="md-nav__icon md-icon"></span>
+                      HTML and CSS
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../html-css/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../html-css/introduction/" class="md-nav__link">
+                          Introduction to HTML
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../html-css/elements/" class="md-nav__link">
+                          HTML Elements
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../html-css/forms/" class="md-nav__link">
+                          HTML Forms
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_2_5">
+                          CSS I
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="CSS I" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_2_5">
+                            <span class="md-nav__icon md-icon"></span>
+                            CSS I
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-i/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-i/introduction/" class="md-nav__link">
+                                Introduction to CSS
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-i/selectors-and-properties/" class="md-nav__link">
+                                Selectors and Properties
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-i/box-model/" class="md-nav__link">
+                                Box Model
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-i/positioning/" class="md-nav__link">
+                                Positioning
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_6" type="checkbox" id="__nav_2_5_6" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_2_5_6">
+                                Flexbox
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="Flexbox" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_2_5_6">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Flexbox
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../html-css/css-i/flexbox/flexbox-fundamentals/" class="md-nav__link">
+                                      Flexbox Fundamentals
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../html-css/css-i/flexbox/flexbox-in-practice/" class="md-nav__link">
+                                      Flexbox In Practice
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_2_6">
+                          CSS II
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="CSS II" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_2_6">
+                            <span class="md-nav__icon md-icon"></span>
+                            CSS II
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-ii/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-ii/media-queries/" class="md-nav__link">
+                                Media Queries
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-ii/bootstrap-introduction/" class="md-nav__link">
+                                Bootstrap Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../html-css/css-ii/bootstrap-grid-system/" class="md-nav__link">
+                                Bootstrap Grid System
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_3">
+                    JavaScript I
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="JavaScript I" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_3">
+                      <span class="md-nav__icon md-icon"></span>
+                      JavaScript I
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_3_2">
+                          Introduction
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Introduction" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_3_2">
+                            <span class="md-nav__icon md-icon"></span>
+                            Introduction
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/introduction/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/introduction/primitive-types/" class="md-nav__link">
+                                Primitive Types
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/introduction/operators/" class="md-nav__link">
+                                Operators
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/introduction/variables/" class="md-nav__link">
+                                Variables
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/introduction/working-with-data-types-operators-and-variables/" class="md-nav__link">
+                                Working With Data Types, Operators, and Variables
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/javascript-with-html/" class="md-nav__link">
+                          JavaScript with HTML
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/functions/" class="md-nav__link">
+                          Functions
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/conditionals/" class="md-nav__link">
+                          Conditionals
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/testing-user-functions/" class="md-nav__link">
+                          Intro to Unit Testing
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/loops/" class="md-nav__link">
+                          Loops
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_3_8">
+                          Arrays
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Arrays" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_3_8">
+                            <span class="md-nav__icon md-icon"></span>
+                            Arrays
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/arrays/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/arrays/manipulating/" class="md-nav__link">
+                                Manipulating
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_9" type="checkbox" id="__nav_3_9" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_3_9">
+                          Objects
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Objects" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_3_9">
+                            <span class="md-nav__icon md-icon"></span>
+                            Objects
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/objects/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/objects/math/" class="md-nav__link">
+                                Math
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_10" type="checkbox" id="__nav_3_10" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_3_10">
+                          BOM and DOM
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="BOM and DOM" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_3_10">
+                            <span class="md-nav__icon md-icon"></span>
+                            BOM and DOM
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/bom-and-dom/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/bom-and-dom/bom/" class="md-nav__link">
+                                Browser Object Model
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/bom-and-dom/dom/" class="md-nav__link">
+                                Document Object Model
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/bom-and-dom/dom-events/" class="md-nav__link">
+                                DOM Events
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/coffee-project/" class="md-nav__link">
+                          Coffee Project
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+
+
+
+
+                  <label class="md-nav__link" for="__nav_4">
+                    jQuery
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="jQuery" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_4">
+                      <span class="md-nav__icon md-icon"></span>
+                      jQuery
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../introduction/" class="md-nav__link">
+                          Introduction
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../selectors/" class="md-nav__link">
+                          Selectors
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_4_4">
+                          Events
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Events" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_4_4">
+                            <span class="md-nav__icon md-icon"></span>
+                            Events
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../events/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../events/mouse-events/" class="md-nav__link">
+                                Mouse Events
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../events/keyboard-events/" class="md-nav__link">
+                                Keyboard Events
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_4_5">
+                          Essential Methods
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Essential Methods" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_4_5">
+                            <span class="md-nav__icon md-icon"></span>
+                            Essential Methods
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../essential-methods/attributes-and-css/" class="md-nav__link">
+                                Attributes And CSS
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../essential-methods/traversing/" class="md-nav__link">
+                                Traversing
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" checked>
+
+
+
+
+                        <label class="md-nav__link" for="__nav_4_6">
+                          Ajax Requests
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Ajax Requests" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_4_6">
+                            <span class="md-nav__icon md-icon"></span>
+                            Ajax Requests
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--active">
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+
+
+
+
+
+                              <label class="md-nav__link md-nav__link--active" for="__toc">
+                                Requests and Responses
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <a href="./" class="md-nav__link md-nav__link--active">
+                                Requests and Responses
+                              </a>
+
+
+
+                              <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+
+
+
+
+
+                                <label class="md-nav__title" for="__toc">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Table of contents
+                                </label>
+                                <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
+                                  <li class="md-nav__item">
+                                    <a href="#basic-request" class="md-nav__link">
+                                      Basic Request
+                                    </a>
+
+                                  </li>
+
+                                  <li class="md-nav__item">
+                                    <a href="#ajax-options" class="md-nav__link">
+                                      Ajax Options
+                                    </a>
+
+                                  </li>
+
+                                  <li class="md-nav__item">
+                                    <a href="#handling-responses" class="md-nav__link">
+                                      Handling Responses
+                                    </a>
+
+                                  </li>
+
+                                  <li class="md-nav__item">
+                                    <a href="#get-post-shorthand" class="md-nav__link">
+                                      Get &amp; Post Shorthand
+                                    </a>
+
+                                  </li>
+
+                                  <li class="md-nav__item">
+                                    <a href="#further-reading" class="md-nav__link">
+                                      Further Reading
+                                    </a>
+
+                                  </li>
+
+                                  <li class="md-nav__item">
+                                    <a href="#exercises" class="md-nav__link">
+                                      Exercises
+                                    </a>
+
+                                    <nav class="md-nav" aria-label="Exercises">
+                                      <ul class="md-nav__list">
+
+                                        <li class="md-nav__item">
+                                          <a href="#ajax-store" class="md-nav__link">
+                                            Ajax Store
+                                          </a>
+
+                                        </li>
+
+                                        <li class="md-nav__item">
+                                          <a href="#ajax-blog" class="md-nav__link">
+                                            Ajax Blog
+                                          </a>
+
+                                        </li>
+
+                                      </ul>
+                                    </nav>
+
+                                  </li>
+
+                                </ul>
+
+                              </nav>
+
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../mapbox-api/" class="md-nav__link">
+                                Mapbox API
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../weather-map/" class="md-nav__link">
+                                Weather Map Project
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../personal-site/" class="md-nav__link">
+                          Personal Site
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_5">
+                    JavaScript II
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="JavaScript II" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_5">
+                      <span class="md-nav__icon md-icon"></span>
+                      JavaScript II
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-ii/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-ii/es6/" class="md-nav__link">
+                          es6
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-ii/map-filter-reduce/" class="md-nav__link">
+                          Map, Filter, and Reduce
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-ii/promises/" class="md-nav__link">
+                          Promises
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-ii/RESTful-api/" class="md-nav__link">
+                          RESTful API Requests
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_6">
+                    Java I
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Java I" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_6">
+                      <span class="md-nav__icon md-icon"></span>
+                      Java I
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/introduction-to-java/" class="md-nav__link">
+                          Introduction To Java
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/syntax-types-and-variables/" class="md-nav__link">
+                          Syntax, Types, and Variables
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/console-io/" class="md-nav__link">
+                          Console IO
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/control-statements-and-loops/" class="md-nav__link">
+                          Control Statements and Loops
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/strings/" class="md-nav__link">
+                          Strings
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-i/methods/" class="md-nav__link">
+                          Methods
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_7">
+                    Java II
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Java II" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_7">
+                      <span class="md-nav__icon md-icon"></span>
+                      Java II
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/object-oriented-programming/" class="md-nav__link">
+                          Object Oriented Programming
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/arrays/" class="md-nav__link">
+                          Arrays
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/inheritance-and-polymorphism/" class="md-nav__link">
+                          Inheritance and Polymorphism
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/interfaces-and-abstract-classes/" class="md-nav__link">
+                          Interfaces and Abstract Classes
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/collections/" class="md-nav__link">
+                          Collections
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/annotations/" class="md-nav__link">
+                          Annotations
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/exceptions-and-error-handling/" class="md-nav__link">
+                          Exceptions and Error Handling
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/file-io/" class="md-nav__link">
+                          File I/O
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/dependency-management/" class="md-nav__link">
+                          Dependency Management
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-ii/junit-tdd/" class="md-nav__link">
+                          Testing Code with JUnit
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_8">
+                    MySQL
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="MySQL" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_8">
+                      <span class="md-nav__icon md-icon"></span>
+                      MySQL
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/introduction/" class="md-nav__link">
+                          Introduction to MySQL
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/users/" class="md-nav__link">
+                          Users
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/databases/" class="md-nav__link">
+                          Databases
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/tables/" class="md-nav__link">
+                          Tables
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/basic-statements/" class="md-nav__link">
+                          Basic Statements
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/sample-database/" class="md-nav__link">
+                          Setting Up Sample DB
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/intellij/" class="md-nav__link">
+                          IntelliJ Setup
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_9" type="checkbox" id="__nav_8_9" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_8_9">
+                          MySQL Clauses
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="MySQL Clauses" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_8_9">
+                            <span class="md-nav__icon md-icon"></span>
+                            MySQL Clauses
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/clauses/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/clauses/where/" class="md-nav__link">
+                                Where
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/clauses/order-by/" class="md-nav__link">
+                                Order By
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/clauses/limit/" class="md-nav__link">
+                                Limit
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/functions/" class="md-nav__link">
+                          Functions
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/group-by/" class="md-nav__link">
+                          Group By
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/aliases/" class="md-nav__link">
+                          Aliases
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_13" type="checkbox" id="__nav_8_13" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_8_13">
+                          Relationships
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Relationships" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_8_13">
+                            <span class="md-nav__icon md-icon"></span>
+                            Relationships
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/relationships/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/relationships/indexes/" class="md-nav__link">
+                                Indexes
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/relationships/joins/" class="md-nav__link">
+                                Joins
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../mysql/relationships/sub-queries/" class="md-nav__link">
+                                Sub-Queries
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../mysql/database-design/" class="md-nav__link">
+                          Database Design
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_9">
+                    Java III
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Java III" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_9">
+                      <span class="md-nav__icon md-icon"></span>
+                      Java III
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/servlets/" class="md-nav__link">
+                          Servlets
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/jsp-and-jstl/" class="md-nav__link">
+                          JSP and JSTL
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_4" type="checkbox" id="__nav_9_4" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_9_4">
+                          MVC
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="MVC" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_9_4">
+                            <span class="md-nav__icon md-icon"></span>
+                            MVC
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../java-iii/mvc/introduction/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../java-iii/mvc/servlets-with-jsps/" class="md-nav__link">
+                                Servlets with JSPs
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../java-iii/mvc/java-beans/" class="md-nav__link">
+                                JavaBeans
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../java-iii/mvc/accessing-data/" class="md-nav__link">
+                                Accessing Data
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/sessions-and-cookies/" class="md-nav__link">
+                          Sessions and Cookies
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/jdbc/" class="md-nav__link">
+                          JDBC
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/user-input/" class="md-nav__link">
+                          User Input
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/passwords/" class="md-nav__link">
+                          Passwords
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../java-iii/finish-the-adlister/" class="md-nav__link">
+                          Finish The Adlister
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_10">
+                    Spring
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Spring" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_10">
+                      <span class="md-nav__icon md-icon"></span>
+                      Spring
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../spring/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../spring/setup/" class="md-nav__link">
+                          Setup
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_3" type="checkbox" id="__nav_10_3" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_10_3">
+                          Fundamentals
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Fundamentals" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_10_3">
+                            <span class="md-nav__icon md-icon"></span>
+                            Fundamentals
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/controllers/" class="md-nav__link">
+                                Controllers
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/views/" class="md-nav__link">
+                                Views
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/repositories/" class="md-nav__link">
+                                Repositories and JPA
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/relationships/" class="md-nav__link">
+                                Relationships
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/form-model-binding/" class="md-nav__link">
+                                Form Model Binding
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/services/" class="md-nav__link">
+                                Services
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_3_7" type="checkbox" id="__nav_10_3_7" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_10_3_7">
+                                Security
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="Security" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_10_3_7">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Security
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../spring/fundamentals/security/" class="md-nav__link">
+                                      Overview
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../spring/fundamentals/security/authentication/" class="md-nav__link">
+                                      Authentication
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/fundamentals/integration-tests/" class="md-nav__link">
+                                Integration Tests
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10_4" type="checkbox" id="__nav_10_4" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_10_4">
+                          Extra Features
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Extra Features" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_10_4">
+                            <span class="md-nav__icon md-icon"></span>
+                            Extra Features
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/extra-features/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/extra-features/form-validation/" class="md-nav__link">
+                                Validation
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/extra-features/error-pages/" class="md-nav__link">
+                                Custom Error Pages
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/extra-features/json-response/" class="md-nav__link">
+                                JSON
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../spring/extra-features/file-upload/" class="md-nav__link">
+                                File Upload
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_11">
+                    Capstone Project
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Capstone Project" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_11">
+                      <span class="md-nav__icon md-icon"></span>
+                      Capstone Project
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../capstone/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../capstone/sw-project-planning/" class="md-nav__link">
+                          Software Project Planning
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../capstone/workbook/" class="md-nav__link">
+                          Capstone Workbook
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../capstone/repo-doc/" class="md-nav__link">
+                          Documentation
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+                <li class="md-nav__item md-nav__item--nested">
+
+
+                  <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+
+
+
+
+                  <label class="md-nav__link" for="__nav_12">
+                    Appendix
+                    <span class="md-nav__icon md-icon"></span>
+                  </label>
+
+                  <nav class="md-nav" aria-label="Appendix" data-md-level="1">
+                    <label class="md-nav__title" for="__nav_12">
+                      <span class="md-nav__icon md-icon"></span>
+                      Appendix
+                    </label>
+                    <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../appendix/" class="md-nav__link">
+                          Overview
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../appendix/pair-programming/" class="md-nav__link">
+                          Pair Programming
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_3" type="checkbox" id="__nav_12_3" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_3">
+                          Professional Development
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Professional Development" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_3">
+                            <span class="md-nav__icon md-icon"></span>
+                            Professional Development
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/professionalism-101/" class="md-nav__link">
+                                Professionalism 101
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/professional-resume/" class="md-nav__link">
+                                Professional Resume
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/cover-letter/" class="md-nav__link">
+                                Cover Letters
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/virtual-meetings/" class="md-nav__link">
+                                Virtual Meeting Tips and Tricks
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/mock-behavioral-questions/" class="md-nav__link">
+                                Mock Behavioral Questions
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/linkedin-tips/" class="md-nav__link">
+                                LinkedIn Tips
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/tech-talk/" class="md-nav__link">
+                                Tech Talks
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/email-setup/" class="md-nav__link">
+                                Email Setup
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/offer-letters/" class="md-nav__link">
+                                Offer Letters
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/job-search-workshop/" class="md-nav__link">
+                                Job Search
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/professional-development/post-interview-review-form/" class="md-nav__link">
+                                Post Interview Review Form
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_4" type="checkbox" id="__nav_12_4" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_4">
+                          Git
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Git" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_4">
+                            <span class="md-nav__icon md-icon"></span>
+                            Git
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/git/intellij-intro/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/git/intellij/" class="md-nav__link">
+                                IntelliJ Walkthrough
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/git/cli/" class="md-nav__link">
+                                CLI Walkthrough
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/git/branching/" class="md-nav__link">
+                                Branching
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/git/working-in-teams/" class="md-nav__link">
+                                Teamwork
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/git/merge-conflict-demo/" class="md-nav__link">
+                                Merge Conflicts
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_5" type="checkbox" id="__nav_12_5" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_5">
+                          Code Standards
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Code Standards" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_5">
+                            <span class="md-nav__icon md-icon"></span>
+                            Code Standards
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/code-standards/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/code-standards/html-css/" class="md-nav__link">
+                                HTML and CSS
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/code-standards/javascript/" class="md-nav__link">
+                                JavaScript
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/code-standards/mysql/" class="md-nav__link">
+                                MySQL
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/code-standards/java/" class="md-nav__link">
+                                Java
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_6" type="checkbox" id="__nav_12_6" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_6">
+                          Extra Challenges
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Extra Challenges" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_6">
+                            <span class="md-nav__icon md-icon"></span>
+                            Extra Challenges
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/basic-challenges/" class="md-nav__link">
+                                General Coding Challenges
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_6_3" type="checkbox" id="__nav_12_6_3" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_6_3">
+                                Questions from the Coding Challenge Meetup
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="Questions from the Coding Challenge Meetup" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_6_3">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Questions from the Coding Challenge Meetup
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/coding-challenges/" class="md-nav__link">
+                                      Overview
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/coding-challenges/amateur/" class="md-nav__link">
+                                      Amateur
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/coding-challenges/intermediate/" class="md-nav__link">
+                                      Intermediate
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/coding-challenges/professional/" class="md-nav__link">
+                                      Professional
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/css-practice/" class="md-nav__link">
+                                CSS Challenges
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../javascript-i/bom-and-dom/calculator/" class="md-nav__link">
+                                JavaScript Calculator
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../whack-a-mole/create-game/" class="md-nav__link">
+                                Whack a Mole Game
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/website-status-page/" class="md-nav__link">
+                                Website Status Page
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/memory-game/" class="md-nav__link">
+                                Memory Game
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../simple-simon/" class="md-nav__link">
+                                Simple Simon Game
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/locations/" class="md-nav__link">
+                                Incidents Map
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/trains/" class="md-nav__link">
+                                Travel Distance Calculation
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/sales-tax/" class="md-nav__link">
+                                Sales Tax
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/mars-rover/" class="md-nav__link">
+                                Mars Rover
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/pdf-parser/" class="md-nav__link">
+                                PDF Parser
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/beef-up-your-blog/" class="md-nav__link">
+                                Beef Up Your Blog
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/facebook-clone/" class="md-nav__link">
+                                Facebook Clone
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../appendix/extra-challenges/java-file-io-extras/" class="md-nav__link">
+                                Java File IO Extras
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_7" type="checkbox" id="__nav_12_7" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_7">
+                          Command Line
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Command Line" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_7">
+                            <span class="md-nav__icon md-icon"></span>
+                            Command Line
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/01-intro/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/02-listing-files/" class="md-nav__link">
+                                Listing Files
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/03-file-paths/" class="md-nav__link">
+                                File Paths
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/04-navigating-the-filesystem/" class="md-nav__link">
+                                Navigating the File System
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/05-creating-files-and-directories/" class="md-nav__link">
+                                Creating Files and Directories
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../prework/cli/06-moving-files/" class="md-nav__link">
+                                Moving Files
+                              </a>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8" type="checkbox" id="__nav_12_8" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_8">
+                          Further Reading
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Further Reading" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_8">
+                            <span class="md-nav__icon md-icon"></span>
+                            Further Reading
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_1" type="checkbox" id="__nav_12_8_1" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_8_1">
+                                HTML/CSS
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="HTML/CSS" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_8_1">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  HTML/CSS
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../html-css/css-i/css-resets/" class="md-nav__link">
+                                      CSS Reset
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/html-css/flexbox-additional-concepts/" class="md-nav__link">
+                                      Additional Flexbox Features
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/html-css/css-grid-additional-features/" class="md-nav__link">
+                                      Additional CSS Grid Features
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item md-nav__item--nested">
+
+
+                                    <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_1_4" type="checkbox" id="__nav_12_8_1_4" >
+
+
+
+
+                                    <label class="md-nav__link" for="__nav_12_8_1_4">
+                                      CSS Grid
+                                      <span class="md-nav__icon md-icon"></span>
+                                    </label>
+
+                                    <nav class="md-nav" aria-label="CSS Grid" data-md-level="4">
+                                      <label class="md-nav__title" for="__nav_12_8_1_4">
+                                        <span class="md-nav__icon md-icon"></span>
+                                        CSS Grid
+                                      </label>
+                                      <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../html-css/css-i/grid/css-grid-intro/" class="md-nav__link">
+                                            Intro to CSS Grid
+                                          </a>
+                                        </li>
+
+
+
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../html-css/css-i/grid/css-grid-fundamentals/" class="md-nav__link">
+                                            CSS Grid Fundamentals
+                                          </a>
+                                        </li>
+
+
+
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../html-css/css-i/grid/css-grid-in-practice/" class="md-nav__link">
+                                            CSS Grid In Practice
+                                          </a>
+                                        </li>
+
+
+
+
+                                      </ul>
+                                    </nav>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_2" type="checkbox" id="__nav_12_8_2" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_8_2">
+                                Javascript
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="Javascript" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_8_2">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Javascript
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/javascript/hoisting/" class="md-nav__link">
+                                      Hoisting in Javascript
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/javascript/array-splice/" class="md-nav__link">
+                                      Array Splice
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/javascript/this/" class="md-nav__link">
+                                      The this keyword
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item md-nav__item--nested">
+
+
+                                    <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_2_4" type="checkbox" id="__nav_12_8_2_4" >
+
+
+
+
+                                    <label class="md-nav__link" for="__nav_12_8_2_4">
+                                      Angular
+                                      <span class="md-nav__icon md-icon"></span>
+                                    </label>
+
+                                    <nav class="md-nav" aria-label="Angular" data-md-level="4">
+                                      <label class="md-nav__title" for="__nav_12_8_2_4">
+                                        <span class="md-nav__icon md-icon"></span>
+                                        Angular
+                                      </label>
+                                      <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../appendix/angular/" class="md-nav__link">
+                                            Overview
+                                          </a>
+                                        </li>
+
+
+
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../appendix/angular/templating/" class="md-nav__link">
+                                            Expressions and Directives
+                                          </a>
+                                        </li>
+
+
+
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../appendix/angular/models/" class="md-nav__link">
+                                            Models
+                                          </a>
+                                        </li>
+
+
+
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../appendix/angular/controllers/" class="md-nav__link">
+                                            Controllers
+                                          </a>
+                                        </li>
+
+
+
+
+
+
+
+
+
+                                        <li class="md-nav__item">
+                                          <a href="../../../appendix/angular/dependencies/" class="md-nav__link">
+                                            Dependencies and Services
+                                          </a>
+                                        </li>
+
+
+
+
+                                      </ul>
+                                    </nav>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../javascript-ii/npm/" class="md-nav__link">
+                                      npm
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../javascript-ii/modules/" class="md-nav__link">
+                                      Modules
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/jquery/effects/" class="md-nav__link">
+                                      jQuery Effects
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_3" type="checkbox" id="__nav_12_8_3" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_8_3">
+                                MySQL
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="MySQL" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_8_3">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  MySQL
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/extra-challenges/mysql/mysql-extra-exercises/" class="md-nav__link">
+                                      Extra Exercises
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/mysql/host-wildcards/" class="md-nav__link">
+                                      Host Wildcards
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_4" type="checkbox" id="__nav_12_8_4" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_8_4">
+                                Java
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="Java" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_8_4">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Java
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/java/intellij-tomcat-configuration/" class="md-nav__link">
+                                      IntelliJ Servlet Application Configuration
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_8_5" type="checkbox" id="__nav_12_8_5" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_8_5">
+                                Spring
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="Spring" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_8_5">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  Spring
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/spring/pagination/" class="md-nav__link">
+                                      Pagination
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/spring/authorization/" class="md-nav__link">
+                                      Authorization
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/spring/security-use-cases/" class="md-nav__link">
+                                      Security Use Cases
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/spring/seeder/" class="md-nav__link">
+                                      Create A Database Seeder
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../appendix/further-reading/spring/devtools-configuration/" class="md-nav__link">
+                                      Devtools
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item md-nav__item--nested">
+
+
+                        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_9" type="checkbox" id="__nav_12_9" >
+
+
+
+
+                        <label class="md-nav__link" for="__nav_12_9">
+                          Web Design
+                          <span class="md-nav__icon md-icon"></span>
+                        </label>
+
+                        <nav class="md-nav" aria-label="Web Design" data-md-level="2">
+                          <label class="md-nav__title" for="__nav_12_9">
+                            <span class="md-nav__icon md-icon"></span>
+                            Web Design
+                          </label>
+                          <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../web-design/" class="md-nav__link">
+                                Overview
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item">
+                              <a href="../../../web-design/intro/" class="md-nav__link">
+                                Introduction
+                              </a>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_9_3" type="checkbox" id="__nav_12_9_3" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_9_3">
+                                UI
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="UI" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_9_3">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  UI
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../web-design/ui/typography/" class="md-nav__link">
+                                      Typography
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../web-design/ui/color/" class="md-nav__link">
+                                      Color Theory
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../web-design/ui/visuals/" class="md-nav__link">
+                                      Visual Communication
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+
+
+
+
+
+
+                            <li class="md-nav__item md-nav__item--nested">
+
+
+                              <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12_9_4" type="checkbox" id="__nav_12_9_4" >
+
+
+
+
+                              <label class="md-nav__link" for="__nav_12_9_4">
+                                UX
+                                <span class="md-nav__icon md-icon"></span>
+                              </label>
+
+                              <nav class="md-nav" aria-label="UX" data-md-level="3">
+                                <label class="md-nav__title" for="__nav_12_9_4">
+                                  <span class="md-nav__icon md-icon"></span>
+                                  UX
+                                </label>
+                                <ul class="md-nav__list" data-md-scrollfix>
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../web-design/ux/purpose/" class="md-nav__link">
+                                      Purpose
+                                    </a>
+                                  </li>
+
+
+
+
+
+
+
+
+
+                                  <li class="md-nav__item">
+                                    <a href="../../../web-design/ux/layout/" class="md-nav__link">
+                                      Layout
+                                    </a>
+                                  </li>
+
+
+
+
+                                </ul>
+                              </nav>
+                            </li>
+
+
+
+
+                          </ul>
+                        </nav>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../appendix/slides/" class="md-nav__link">
+                          Slideshows
+                        </a>
+                      </li>
+
+
+
+
+
+
+
+
+
+                      <li class="md-nav__item">
+                        <a href="../../../javascript-i/google-maps-api/" class="md-nav__link">
+                          Google Maps API
+                        </a>
+                      </li>
+
+
+
+
+                    </ul>
+                  </nav>
+                </li>
+
+
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+        <div class="md-sidebar__scrollwrap">
+          <div class="md-sidebar__inner">
+
+
+            <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+
+
+
+
+
+              <label class="md-nav__title" for="__toc">
+                <span class="md-nav__icon md-icon"></span>
+                Table of contents
+              </label>
+              <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+
+                <li class="md-nav__item">
+                  <a href="#basic-request" class="md-nav__link">
+                    Basic Request
+                  </a>
+
+                </li>
+
+                <li class="md-nav__item">
+                  <a href="#ajax-options" class="md-nav__link">
+                    Ajax Options
+                  </a>
+
+                </li>
+
+                <li class="md-nav__item">
+                  <a href="#handling-responses" class="md-nav__link">
+                    Handling Responses
+                  </a>
+
+                </li>
+
+                <li class="md-nav__item">
+                  <a href="#get-post-shorthand" class="md-nav__link">
+                    Get &amp; Post Shorthand
+                  </a>
+
+                </li>
+
+                <li class="md-nav__item">
+                  <a href="#further-reading" class="md-nav__link">
+                    Further Reading
+                  </a>
+
+                </li>
+
+                <li class="md-nav__item">
+                  <a href="#exercises" class="md-nav__link">
+                    Exercises
+                  </a>
+
+                  <nav class="md-nav" aria-label="Exercises">
+                    <ul class="md-nav__list">
+
+                      <li class="md-nav__item">
+                        <a href="#ajax-store" class="md-nav__link">
+                          Ajax Store
+                        </a>
+
+                      </li>
+
+                      <li class="md-nav__item">
+                        <a href="#ajax-blog" class="md-nav__link">
+                          Ajax Blog
+                        </a>
+
+                      </li>
+
+                    </ul>
+                  </nav>
+
+                </li>
+
+              </ul>
+
+            </nav>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="md-content" data-md-component="content">
+        <article class="md-content__inner md-typeset">
+
+
+
+
+          <h1 id="ajax-request">Ajax Request</h1>
+          <p>Ajax is a way to communicate with a server, sending or retrieving data, without
+            refreshing the current webpage. Once the request is done we can alter the DOM
+            with the requested information or result. The quintessential example of this is
+            <a href="https://www.google.com/maps">Google Maps</a>. Each time you drag the map or press
+            a button, the map information is changed without refreshing the entire view.
+            This can provide a very rich user experience.</p>
+          <p>In this lesson we will learn how to use jQuery to send Ajax requests, and how to
+            work with information returned from Ajax requests.</p>
+          <h2 id="basic-request">Basic Request</h2>
+          <p>The syntax to perform an Ajax request in plain JavaScript can be rather
+            challenging. To save ourselves from that complexity, we will be using jQuery to
+            issue Ajax requests. The simplest way to issue an Ajax request is the following:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+          <p>This will issue a <code>GET</code> request to your server, asking for the file stored at <code>/some-url</code>. What if we needed to use a <code>POST</code> request instead? Or if we wanted to pass some additional data with the request? For these purposes, and others, <code>$.ajax()</code> accepts a JavaScript object of additional options as a second argument.</p>
+          <h2 id="ajax-options">Ajax Options</h2>
+          <p>The easiest way to manipulate the Ajax options is to pass a JavaScript object like the following:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w">     </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Boston&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <p>In this example, we are instructing jQuery to send a <code>POST</code> request rather than
+            <code>GET</code> and to pass some additional information to the server with the request
+            (<code>name: John, location: Boston</code>). The Ajax options object has numerous
+            parameters and values it can use. Some of the most common options are:</p>
+          <ul>
+            <li><code>type</code> &mdash; The type of HTTP request to send to the server. Can be <code>"GET"</code>,
+              <code>"POST"</code>, <code>"PUT"</code>, or <code>"DELETE"</code>. The default is <code>"GET"</code>.</li>
+            <li><code>data</code> &mdash; Data to be included with the request. Typically this will be a
+              JavaScript object. If the request type is <code>GET</code> the data will be encoded into
+              the URL being requested. Otherwise, it is included with the request behind the
+              scenes.</li>
+            <li><code>dataType</code> &mdash; The type of data we expect the server to send back from our
+              request. Common options are <code>"json"</code>, <code>"xml"</code>, <code>"html"</code>, or <code>"text"</code>. By
+              default, jQuery will try to guess this value based on the response content.</li>
+            <li><code>url</code> &mdash; Rather than passing the request URL as a string to <code>$.ajax()</code>
+              you can just pass a JavaScript object on its own and include the <code>url</code> option
+              to specify where to send the request. We will see an example of this further
+              on.</li>
+            <li><code>username</code> &amp; <code>password</code> &mdash; If a server requires a username and password
+              you  can specify it using these parameters.</li>
+            <li><code>headers</code> &mdash; an object of whose key value pairs represent custom HTTP headers to
+              send along with the request</li>
+          </ul>
+          <h2 id="handling-responses">Handling Responses</h2>
+          <p>Now that we can send requests to the server, how do we handle the data that comes
+            back? It is important to be aware that Ajax requests are done <em>asynchronously</em>.
+            This means that even though the request is fired off when we call <code>$.ajax()</code>,
+            JavaScript does not sit and wait for the response to come back. The server could
+            reply in a fraction of a second, or it could reply in half a minute!</p>
+          <div class="admonition error">
+            <p>It is tempting to think we can write something along the lines of:
+            <div class="highlight"><pre><span></span><code><span class="c1">// THIS WILL *NOT* WORK</span><span class="w"></span>
+
+<span class="c1">// Send Ajax request</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">ajaxData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Handle data from Ajax request</span><span class="w"></span>
+<span class="nx">doSomething</span><span class="p">(</span><span class="nx">ajaxData</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+            But just because an Ajax request has been sent is no guarantee that it has come
+            back from the server by the time the next line of JavaScript is executed. In our
+            example above, <code>doSomething</code> will be called before JavaScript has even finished
+            sending the request to the server! Instead, we must explicitly specify a
+            function to be called once the response has come back.</p>
+          </div>
+          <p>The example below makes a <code>GET</code> request to the pokeAPI using the <code>/pokemon</code> endpoint for data regarding Charmander. </p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://pokeapi.co/api/v2/pokemon/charmander&#39;</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+          <p>A function that we create to be called when some process completes is called a
+            <em>callback function</em>. The primary way to attach a callback to your Ajax request
+            is to tack <code>.done()</code> to the end of your request and pass your callback to it,
+            like the following:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">jqXhr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;AJAX call completed successfully!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Request status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">status</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Data returned from server:&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <p><code>.done()</code> is a method that accepts a callback function as an argument. jQuery
+            will then call that function once the Ajax request has come back successfully.
+            The callback function, when called, will be passed 3 arguments:</p>
+          <ul>
+            <li><code>data</code>: the body of the response from the server</li>
+            <li><code>status</code>: a string indicating the status of the request</li>
+            <li><code>jqXhr</code>: a jQuery object that represents the Ajax request</li>
+          </ul>
+          <p>jQuery tries to guess at the data type sent by the server; if jQuery thinks the
+            server returned a JSON object, the argument will be an object.  If jQuery thinks
+            it was text, the argument will be a string.  You can force a particular data
+            type with the <code>dataType</code> option.</p>
+          <p>Remember that we can omit any parameters that we are not going to use from a
+            function. Commonly, we will only need the <code>data</code> parameter.</p>
+          <p>There are three different methods you can use to specify callback functions for
+            an Ajax request. They are:</p>
+          <ul>
+            <li><code>.done</code> &mdash; Takes in a function that is called when the request completes
+              <em>successfully</em>.</li>
+            <li><code>.fail</code> &mdash; Takes in a function that is called when a request completed
+              with an <em>error</em> (e.g. the server sent back a 404).</li>
+            <li><code>.always</code> &mdash; Takes in a function that is called for both failed and
+              successful requests.</li>
+          </ul>
+          <p>The function passed to <code>.fail</code> will be called with 3 arguments:</p>
+          <ul>
+            <li><code>jqXhr</code> &mdash; a jQuery object that represents the Ajax request</li>
+            <li><code>status</code> &mdash; a string representing the status of the request</li>
+            <li><code>error</code> &mdash; an object that represents the error that occurred, if any</li>
+          </ul>
+          <p>The callback function attached with <code>.always</code> will be called with the same
+            arguments the were passed to either the <code>.done</code> callback, or the <code>.fail</code>
+            callback, depending on whether the request was successful or not.</p>
+          <p>An example combining all three callback types might look like:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">jqXhr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Everything went great! Check out the server&#39;s response in the console.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXhr</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;There was an error! Check the console for details&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Response status: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">status</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error object: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;This function always runs!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <p>Notice that only two of those callbacks will ever be called; <code>.done()</code> and
+            <code>.fail()</code> are mutually exclusive, so there should never be a case where <strong>both</strong>
+            are called. <code>.always()</code>, as the name implies, is always called.</p>
+          <p>If for whatever reason you need to break your callbacks apart, or if the syntax
+            is feeling too dense, you can assign your Ajax request to a variable and then
+            attach callbacks to that variable. Our above example could be rewritten as:</p>
+          <div class="highlight"><pre><span></span><code><span class="c1">// Assign to variable</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">jqXhr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Attach callback functions individually</span><span class="w"></span>
+<span class="nx">jqXhr</span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">jqXhr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Everything went great!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="nx">jqXhr</span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">jqXhr</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;There was an error!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+
+<span class="nx">jqXhr</span><span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;And we&#39;re done!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <p>Remember that any anonymous function can be replaced with a named function, and
+            as our code starts to get more complex, it usually makes sense to do so. Here is
+            a small example using named functions with comments that contain examples of
+            what the function might be used for:</p>
+          <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">onSuccess</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">jqXhr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// display the requested data to the user</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">onFail</span><span class="p">(</span><span class="nx">jqXhr</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// tell the user something went wrong, and to try again later</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">stopLoadingAnimation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// the request is no longer pending, hide the loading spinner</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span><span class="s2">&quot;/some-url&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">done</span><span class="p">(</span><span class="nx">onSuccess</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">fail</span><span class="p">(</span><span class="nx">onFail</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="nx">always</span><span class="p">(</span><span class="nx">stopLoadingAnimation</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+          <h2 id="get-post-shorthand">Get &amp; Post Shorthand</h2>
+          <p>jQuery includes a couple of shortcuts for relatively simple requests. Often, we
+            simply want to send either a <code>GET</code> or <code>POST</code> request with some simple
+            parameters. For example, if you wanted to send a <code>GET</code> request to <code>/users</code> with
+            the parameters <code>limit: 10</code> and <code>offset: 20</code> you can use the <code>.get</code> method like
+            so:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/users&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">limit</span><span class="o">:</span><span class="w">  </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">offset</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// do something with the data</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <p>The first argument is the URL we are requesting, like before. The second
+            argument is whatever data we want to send. The above example would be the same
+            as:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/users&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">limit</span><span class="o">:</span><span class="w">  </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">offset</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// do something with the data</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <p>Both examples are identical, it is just a matter of which syntax you find most
+            comfortable. The same is true of <code>$.post()</code>. If we wanted to send a <code>POST</code>
+            request to <code>/address/save</code> with the data of <code>first_name: George</code>, <code>last_name:
+              Weathers</code>, <code>city: Denver</code>, <code>state: CO</code> we could do:</p>
+          <div class="highlight"><pre><span></span><code><span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/address/save&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">first_name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;George&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">last_name</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;Weathers&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">city</span><span class="o">:</span><span class="w">       </span><span class="s2">&quot;Denver&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">state</span><span class="o">:</span><span class="w">      </span><span class="s2">&quot;CO&quot;</span><span class="w"></span>
+<span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// do something with the response</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+          <h2 id="further-reading">Further Reading</h2>
+          <ul>
+            <li><a href="http://api.jquery.com/jQuery.ajax/#jQuery-ajax-settings">jQuery Ajax settings</a></li>
+            <li><a href="http://api.jquery.com/jQuery.get/">The <code>$.get</code> method</a></li>
+            <li><a href="http://api.jquery.com/jQuery.post/">The <code>$.post</code> method</a></li>
+          </ul>
+          <h2 id="exercises">Exercises</h2>
+          <blockquote>
+            <p><strong>OpenWeather API Registration</strong>:<br>
+              For the upcoming WeatherMap project, we will need to register for an
+              account for the OpenWeatherAPI. The authorization may take up to a day,
+              so in order to avoid unauthorized access, please register here. <br>
+              OpenWeatherMap: https://home.openweathermap.org/users/sign_up</p>
+          </blockquote>
+          <h3 id="ajax-store">Ajax Store</h3>
+          <ol>
+            <li>Download and save <a href="/examples/javascript/ajax-store.html">ajax-store.html</a>.</li>
+            <li>Create a <code>data</code> directory and download <a href="/examples/javascript/inventory.json">inventory.json</a> to that folder.</li>
+            <li>Your online tool store should load data from the JSON file using a get request and append the data to the table. You will need to use either <code>$.ajax()</code> or <code>$.get()</code>, and a <code>.done()</code> callback.</li>
+            <li>Add some new entries to inventory.json and see how the data on the page gets updated.</li>
+            <li>Add a "Refresh" button that will load inventory.json for you without having to refresh the entire page.</li>
+            <li>Add Twitter Bootstrap to your online store with some custom CSS to make the style your own.</li>
+          </ol>
+          <h3 id="ajax-blog">Ajax Blog</h3>
+          <ol>
+            <li>Create a new html file called <code>ajax-blog.html</code>.</li>
+            <li>At minimum, your Ajax blog will need an empty <code>&lt;div&gt;</code> with an id of <code>posts</code>.</li>
+            <li>Add your own Bootstrap theme to this file as well. Feel free to use the same one as your store or choose a different one.</li>
+            <li>Download <a href="/examples/javascript/blog.json">blog.json</a> to your <code>data</code> directory from before.</li>
+            <li>Use Ajax to load the contents of <code>blog.json</code> and add the data from it to your <code>#posts</code> div.</li>
+            <li>Add additional entries to <code>blog.json</code> and make sure your changes are reflected on the page.</li>
+          </ol>
+
+
+
+
+
+
+        </article>
+      </div>
+
+
+    </div>
+
+  </main>
+
+  <footer class="md-footer">
+
+
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+
+
+      <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
+        <div class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        </div>
+        <div class="md-footer__title">
+          <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+            Overview
+          </div>
+        </div>
+      </a>
+
+
+
+      <a href="../../mapbox-api/" class="md-footer__link md-footer__link--next" aria-label="Next: Mapbox API" rel="next">
+        <div class="md-footer__title">
+          <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+            Mapbox API
+          </div>
+        </div>
+        <div class="md-footer__button md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+        </div>
+      </a>
+
+    </nav>
+
+  </footer>
+
+</div>
+<div class="md-dialog" data-md-component="dialog">
+  <div class="md-dialog__inner md-typeset"></div>
+</div>
+
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+
+
+
+<script src="../../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+
+<script src="../../../static-assets/keyboard-navigation.js"></script>
+
+
+<script src="../../../assets/javascripts/custom.525be7f2.min.js"></script>
+
+
+</body>
+</html>

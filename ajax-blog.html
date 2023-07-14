@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax Blog</title>
+    <!-- Add your Bootstrap theme link here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+<body>
+
+<h1>Ajax Blog</h1>
+
+<div id="posts"></div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    // Add your JavaScript code here
+    $.ajax({
+        url: 'blog.json',
+        type: 'GET',
+        dataType: 'json'
+    })
+        .done(function(data) {
+            // Handle the response and append data to the #posts div
+            $.each(data, function(index, post) {
+                $('#posts').append('<div><h2>' + post.title + '</h2><p>' + post.content + '</p></div>');
+            });
+        })
+        .fail(function() {
+            console.log('Error loading data');
+        });
+</script>
+
+</body>
+</html>
