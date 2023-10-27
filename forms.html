@@ -2,66 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register With Us</title>
-    <style>
-        body {
-            background-color: olive;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            border: 3px solid gray;
-            height: 440px;
-            width: 405px;
-            padding-left: 10px;
-            background-color: linen;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <title>forms</title>
 </head>
-<body style="background-color: olive">
-<!--   Added page wrapper for easy of boundary manipulations of any div's -->
-<div class="wrapper" style="background-color: olive">
-    <div class="container" style="border: 3px solid gray; height: 440px; width: 405px; padding-left: 10px; background-color: linen">
-        <Center>Register <em>with us</em> Today!</Center>
-        <br>
-        <form method="POST" action="https://request-inspector.glitch.me/">
-            <input type="email" placeholder="enter email">
-            <br>
-            <input type="password" placeholder="enter password" name="password">
-            <br>
-            <button>submit</button>
-        </form>
-        <br>
-        <label for="bio">Short Bio:</label><br>
-        <textarea id="bio" name="bio" rows="8" cols="35"></textarea>
-        <br>
-        <form>
+<meta charset="UTF-8">
+<title>Register With Us</title>
+<body>
+    <form method="POST" action="https://request-inspector.glitch.me/">
+        <label for="email">User Email:</label>
+        <input type="text" name="email" id="email" placeholder="Enter Email Here"><br>
+        <label for="password">User Password:</label>
+        <input type="password" name="password" id="password" placeholder="Enter Password Here"><br>
+        <label for="bio">User Biography:</label><br>
+        <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+        <section>
+            <h3> Hey, how did you hear about us?</h3>
+            <input type="checkbox" id="billboard" name="ad" value="billboard"> <label for="billboard">Billboard</label><br>
 
-            <fieldset style="width: 90%;">
-                <legend>How did you hear about us?</legend>
+            <input type="checkbox" id="radio-ad" name="ad" value="radio advertisement"> <label for="radio-ad">Radio Advertisement</label><br>
 
-                <input type="radio" id="billboard" name="source" value="billboard">
-                <label for="billboard">Billboard</label><br>
+            <input type="checkbox" id="internet-ad" name="ad" value="internet advertisement"> <label for="internet-ad">Internet Advertisement</label><br>
 
-                <input type="radio" id="radioAd" name="source" value="radio advertisement">
-                <label for="radioAd">Radio Advertisement</label><br>
-
-                <input type="radio" id="internetAd" name="source" value="internet advertisement">
-                <label for="internetAd">Internet Advertisement</label><br>
-
-                <input type="radio" id="other" name="source" value="other">
-                <label for="other">Other</label><br>
-            </fieldset>
-        </form>
-    </div>
-</div>
+            <input type="checkbox" id="other" name="ad" value="other"> <label for="other">Other</label><br>
+        </section>
+        <label for="browser-select">What's your preferred web browser?</label>
+        <select name="browser" id="browser-select">
+            <option value="netscape">Operation Zapper</option>
+            <option value="netscape">Net-trap Navigator</option>
+            <option value="netscape">Macro-tough Center</option>
+            <option value="netscape">Godzilla </option>
+        </select>
+        <button>Submit The Form</button>
+    </form>
 </body>
 </html>

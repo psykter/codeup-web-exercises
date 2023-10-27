@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register With Us</title>
+    <style>
+        body {
+            background-color: olive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            border: 3px solid gray;
+            height: 440px;
+            width: 405px;
+            padding-left: 10px;
+            background-color: linen;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body style="background-color: olive">
+<!--   Added page wrapper for easy of boundary manipulations of any div's -->
+<div class="wrapper" style="background-color: olive">
+    <div class="container" style="border: 3px solid gray; height: 440px; width: 405px; padding-left: 10px; background-color: linen">
+        <Center>Register <em>with us</em> Today!</Center>
+        <br>
+        <form method="POST" action="https://request-inspector.glitch.me/">
+            <input type="email" placeholder="enter email">
+            <br>
+            <input type="password" placeholder="enter password" name="password">
+            <br>
+            <button>submit</button>
+        </form>
+        <br>
+        <label for="bio">Short Bio:</label><br>
+        <textarea id="bio" name="bio" rows="8" cols="35"></textarea>
+        <br>
+        <form>
+
+            <fieldset style="width: 90%;">
+                <legend>How did you hear about us?</legend>
+
+                <input type="radio" id="billboard" name="source" value="billboard">
+                <label for="billboard">Billboard</label><br>
+
+                <input type="radio" id="radioAd" name="source" value="radio advertisement">
+                <label for="radioAd">Radio Advertisement</label><br>
+
+                <input type="radio" id="internetAd" name="source" value="internet advertisement">
+                <label for="internetAd">Internet Advertisement</label><br>
+
+                <input type="radio" id="other" name="source" value="other">
+                <label for="other">Other</label><br>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</body>
+</html>
