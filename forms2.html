@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Forms II the sequal</title>
+</head>
+<body>
+<form method="POST" action="https://request-inspector.glitch.me/">
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email" placeholder="Enter your email"><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" placeholder="Enter your password"><br>
+
+  <label for="bio">Short Bio:</label>
+  <textarea id="bio" name="bio" placeholder="Tell us about yourself"></textarea><br>
+
+  <fieldset>
+    <legend>How did you hear about us:</legend>
+    <label for="billboard">Billboard</label>
+    <input type="radio" id="billboard" name="source" value="billboard"><br>
+
+    <label for="radioAd">Radio Advertisement</label>
+    <input type="radio" id="radioAd" name="source" value="radio advertisement"><br>
+
+    <label for="internetAd">Internet Advertisement</label>
+    <input type="radio" id="internetAd" name="source" value="internet advertisement"><br>
+
+    <label for="other">Other</label>
+    <input type="radio" id="other" name="source" value="other"><br>
+  </fieldset>
+
+  <label for="browser">Select your web browser:</label>
+  <select id="browser" name="browser">
+    <option value="Chrome">Chrome</option>
+    <option value="Firefox">Firefox</option>
+    <option value="Edge">Edge</option>
+    <option value="Safari">Safari</option>
+    <option value="Other">Other</option>
+  </select><br>
+
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
