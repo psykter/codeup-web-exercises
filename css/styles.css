@@ -45,6 +45,21 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
+.product-border {
+    border: 2px solid #000; /* You can adjust the color (#000) as needed */
+    border-collapse: collapse; /* Ensures border-spacing is removed between table cells */
+    width: 100%; /* Makes the table take the full available width */
+}
+
+
+/*.ul {*/
+/*    display: inline-block;*/
+/*}*/
+
+/*.ol {*/
+/*    display: flex;*/
+/*}*/
+
 
 a {
     text-decoration: none;
