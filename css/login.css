@@ -6,7 +6,7 @@
 body, html {
     height: 100%;
     width: 100%;
-    background-color: #cbffcd;
+    background-color: #ccffcc;
     font-family: Arial, Ubuntu, sans-serif;
 }
 
@@ -15,6 +15,7 @@ form {
     /* There must be 1em between the content and the border of this element */
     margin: 1em; /* Adds 1em of spacing around the form */
     padding: 1em; /* Adds 1em of spacing between the content and the border */
+    /*border: 1px solid #333;*/
 }
 
 fieldset {
@@ -33,15 +34,15 @@ fieldset {
     /* The element with this class should be 80% of the width and it must be centered */
     /* Read how to center elements with margin here: http://learnlayout.com/margin-auto.html*/
     width: 80%; /* Set the width to 80% of the container */
-    margin: 0 auto; /* Center the element horizontally */
+    margin: auto; /* Center the element horizontally */
 }
 
 .form-group {
     /* This element must use 100% of the width */
     /* It should have a separation of .5em from elements on top of it and below it*/
     width: 100%; /* Use 100% of the width */
-    margin-top: 0.5em; /* Add 0.5em of spacing above the element */
-    margin-bottom: 0.5em; /* Add 0.5em of spacing below the element */
+    margin: 0.5em 0; /* Add 0.5em of spacing above the element */
+    /*margin-bottom: 0.5em; !* Add 0.5em of spacing below the element *!*/
 }
 
 .form-label {
@@ -58,11 +59,16 @@ fieldset {
     /* There must be a separation of 8px between the text and the border of this element */
     /* The text color of this element should be white and bold */
     /* The border of this element should be 1px, and its color should be light grey */
-    background-color: #0fb784;
+    background-color: #38b885;
     padding: 8px; /* Add 8px of padding around the text */
     color: white; /* Set the text color to white */
     font-weight: bold; /* Make the text bold */
-    border: 3px solid black; /* Add a 1px light gray border */
+    border: 3px solid #5d435c; /* Add a 1px light gray border */
+    transition: font-size 0.3s; /* Add a smooth transition for the font size */
+}
+
+.btn:hover {
+    font-size: 110%; /* Increase the font size by 10% on hover */
 }
 
 .form-control {
@@ -73,11 +79,12 @@ fieldset {
     /* See the example at: https://developer.mozilla.org/en-US/docs/Web/CSS/calc */
     /* HINT: Examples are available at: https://glitch.com/~input-button-width */
     /*width: 100%;*/
+    box-sizing: border-box;
     margin-top: 4px; /* Add 4px of spacing above the text */
     margin-bottom: 4px; /* Add 4px of spacing below the text */
     margin-top: 0.5em; /* Add 0.5em of spacing above the element */
     margin-bottom: 0.5em; /* Add 0.5em of spacing below the element */
-    width: calc(100% - 8px); /* Use the calc function to match the width to the button (subtract 8px for separation) */
+    /*width: calc(100% - 4px); !* Use the calc function to match the width to the button (subtract 8px for separation) *!*/
 }
 
 

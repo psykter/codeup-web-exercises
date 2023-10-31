@@ -1,0 +1,52 @@
+/*:root {*/
+/*    --bg-info: #cddef;*/
+/*    --font-info: #504ba5;*/
+/*    --bg-success:#crr3da;*/
+/*    --font-success: #428f61;*/
+/*    --bg-warning: #fcfbc9;*/
+/*    --font-warning: #8d7912;*/
+/*    --bg-error: #fad3d7;*/
+/*    --font-error: #a1495d;*/
+/*}*/
+
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+.message {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message-info {
+    background-color: #cddeff;
+    border: 1px solid #d7d7d7;
+    color: #383093;
+}
+
+.message-success {
+    background-color: #cff3da;
+    border: 1px solid #d2d3d2;
+    color: #206c37;
+}
+
+.message-warning {
+    background-color: #fcfbc9;
+    border: 1px solid #d3d3d2;
+    color: #8c7817;
+}
+
+.message-error {
+    background-color: #fad3d7;
+    border: 1px solid #eaeaea;
+    color: #74021f;
+}
