@@ -67,6 +67,7 @@ h2, h3 {
 
 section {
     /* enter needed declarations here */
+    margin-bottom: 20px;
 }
 
 section:nth-of-type(1) {
