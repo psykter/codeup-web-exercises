@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: lightskyblue;
+    font-family: Chalkboard, sans-serif;
+}
+
+h1 {
+    background: linear-gradient(to right, #b0b0b0, #f0f0f0); /* Metallic gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h2, h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.green-box {
+    background: green;
+    height: 1em;
+    width: 2em;
+    border: 3px solid black;
+}
+
+/* Add this CSS block to style the container of green-boxes */
+.green-box-container {
+    display: flex;
+    justify-content: space-between; /* This will create space between green-boxes */
+    align-items: center; /* Center the items vertically */
+    height: 100%; /* Make sure the parent container has a defined height */
+}
+
+/* Add this CSS block to adjust the last green box */
+.green-box-container .green-box:last-child {
+    margin-top: 0; /* Reset any margin from the previous declaration */
+    margin-bottom: auto; /* Push the last green box to the top */
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.card {
+    width: 400px;
+    height: 800px;
+    background: white;
+    padding: 1em;
+    margin: 0 auto;
+    /* enter needed declarations here */
+}
+
+section {
+    /* enter needed declarations here */
+}
+
+section:nth-of-type(1) {
+    height: 3em;
+    background: lightgreen;
+    /* enter needed declarations here */
+}
+
+section:nth-of-type(1) div:last-child {
+    /* enter needed declarations here */
+}
+
+.centered-text {
+    display: flex;
+    align-items: center; /* Vertically center the content within the div */
+    height: 5%; /* Ensure the div takes the full height of the container */
+    margin-bottom: 10px;
+}
+
+.purple-box-container {
+    display: flex;
+}
+
+.purple-box {
+    background: fuchsia;
+    border: 3px solid black;
+    /* Set a common width and adjust the size using flex */
+    width: 3em;
+    height: 1em;
+}
+
+.purple-box:nth-of-type(1) {
+    flex: 2; /* Half of the width of the next box */
+}
+
+.purple-box:nth-of-type(2) {
+    flex: 1; /* Half of the width of the previous box */
+}
+
+.blue-box {
+    width: 100%;
+    background: blue;
+    height: 10em;
+    margin-bottom: 10px;
+    border: 3px solid black;
+}
+
+/*section:nth-of-type(3) {*/
+/*    !* enter needed declarations here *!*/
+/*}*/
+
+/*section:nth-of-type(3) h3 {*/
+/*    !* enter needed declarations here *!*/
+
+/*}*/
+
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Move the heading to the start and the orange circles to the end */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.flex-container h3 {
+    margin-bottom: 0;
+}
+
+.orange-circle-set {
+    display: flex; /* Create a row layout for the orange circles */
+}
+
+.orange-circle {
+    background: orange;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    margin: .5em;
+}
+
+.row-container {
+    display: flex;
+    justify-content: space-around; /* Space the boxes evenly */
+    align-items: center;
+}
+
+.large-brown-box {
+    height: 5em;
+    width: 8em;
+    background: brown;
+    border: 3px solid black;
+}
+
+.large-brown-box:nth-of-type(2) {
+    margin: 0 1em;
+}
+
+section:nth-of-type(5) {
+    /* enter needed declarations here */
+}
+
+.yellow-box-container {
+    display: flex;
+    justify-content: space-evenly; /* Space the yellow boxes evenly */
+    height: 5%;
+}
+
+.yellow-box {
+    background: yellow;
+    width: 2em;
+    height: 2em;
+    margin: 0.2em;
+    border: 3px solid black;
+}
+
+section:nth-of-type(6) {
+    background: coral;
+    height: 14em;
+    /* enter needed declarations here */
+}
+
+.grey-box-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow the elements to wrap onto the next row */
+    justify-content: space-between; /* Space the grey boxes evenly in a row */
+    align-items: center;
+    margin-top: -5px;
+}
+
+.grey-box {
+    background: grey;
+    width: 3em;
+    height: 3em;
+    margin: 0.1em; /* Add margin for spacing between the grey boxes */
+    border: 3px solid black;
+}
+
+.grey-box:nth-of-type(odd) {
+    height: 4em;
+}
+
+section {
+    margin-bottom: 20px; /* Adjust the margin to control the spacing between sections */
+}
