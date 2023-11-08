@@ -1,0 +1,88 @@
+body {
+    background-image: url('Pizzaria.jpeg'); /* Replace 'your-image.jpg' with the path to your image */
+    background-size: cover; /* Adjust the background size as needed */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Fixed background for entire page */
+    opacity: 0.9; /* Set the opacity level (0.0 to 1.0) */
+}
+
+/*button.btn-outline-success {*/
+/*    margin: 0 0 0 5px;*/
+/*}*/
+
+/*  research container value symetry    */
+.container-fluid.at-hero {
+    min-height: 30vh;
+    box-sizing: content-box;
+    background-image: url("pizza.png");
+    background-position: center center;
+    background-size: cover;
+    background-color: rgba(119, 120, 83, .1);
+    width: 88em;
+}
+
+div.column.bg-body-secondary {
+    flex-direction: row;
+    justify-content: end;
+    padding: 10px;
+}
+
+div button.btn-secondary {
+    justify-content: space-between;
+}
+
+footer {
+    margin-top: 20em;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    width: 90dvw;
+    margin-top: 10em;
+}
+
+footer > p {
+    display: inline-block;
+    flex-grow: 1;
+}
+
+h2.build-pizza {
+    padding: 2rem 0 0 0;
+    font-weight: bolder;
+}
+
+li button span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #6D6D6D;
+    color: white;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        align-items: center;
+    }
+
+
+    .pagewrapper {
+        background-color: rgba(202, 202, 3, 0.25);
+    }
+
+    .search-box, button.btn {
+        width: fit-content;
+        block-size: fit-content;
+        align-items: center;
+    }
+
+    .selector-for-some-widget {
+        box-sizing: content-box;
+    }
+
+    .nav-item a {
+        text-decoration: none;
+    }

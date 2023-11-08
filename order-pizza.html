@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pizza Party</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<div class="pagewrapper">
+  <nav class="navbar navbar-expand-lg bg-white mb-5">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Pizza World</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav w-100">
+          <a class="nav-link active" aria-current="page" href="#">Order Pizza</a>
+          <a class="nav-link" href="#">Menu</a>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Zip Code" aria-label="Search">
+            <button class="btn btn-outline-success w-100" type="submit">Search stores near you!</button>
+          </form>
+          <a class="nav-link ms-auto" href="#"><i class="fa-solid fa-user me-2"></i>🍕Sign Up!</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!--       $green-100   $green-600  -->
+  <div class="container-fluid at-hero d-flex align-items-center p-0">
+    <h1 class="fst-italic w-100 text-center text-success bg-light bg-opacity-75 p-2">Welcome to Pizza World!</h1>
+  </div>
+
+  <div class="custom-tabs container text-success p-0">
+    <div class="tabs row">
+      <div class="tab-panes column">
+        <h2 class="build-pizza">Build Your Own Pizza!</h2>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active text-success" id="crust-tab" data-bs-toggle="tab" data-bs-target="#crust-1"
+                    type="button" role="tab" aria-controls="crust-1-tab-pane" aria-selected="true">
+              <span><strong>1</strong></span> Size and Crust
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-success" id="cheese-tab" data-bs-toggle="tab" data-bs-target="#cheese-sauce-2"
+                    type="button" role="tab" aria-controls="cheese-sauce-2-tab-pane" aria-selected="false">
+              <span><strong>2</strong></span> Cheese and Sauce
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-success" id="toppings-tab" data-bs-toggle="tab" data-bs-target="#toppings-3"
+                    type="button" role="tab" aria-controls="toppings-3-tab-pane" aria-selected="false">
+              <span><strong>3</strong></span> Toppings
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="crust-choice container border border-success p-0 tab-pane fade show active" role="tabpanel" id="crust-1"
+         aria-labelledby="crust-1-tab" tabindex="0">
+      <div class="size-crust-alert bg-success p-2 text-light">Choose Size and Crust</div>
+      <div class="row m-2 tab-pane">
+        <div class="hand-toss-crust column card p-0 my-2">
+          <div class="card-header hand-toss">Hand Tossed</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Garlic Seasoned Crust with rich, buttery taste.</li>
+            <li class="list-group-item"><label for="small-tossed"><input type="radio" id="small-tossed" name="crust" value="tossed-10in"> Small
+              (10")</label></li>
+            <li class="list-group-item"><label for="medium-tossed"><input type="radio" id="medium-tossed" name="crust" value="tossed-12in">
+              Medium (12")</label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="thin-crust column card p-0 my-2">
+          <div class="card-header crispy-thin">
+            Crispy Thin
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> Thin enough for optimum crispy to crunchy ratio</li>
+            <li class="list-group-item"><label for="medium-thin"><input type="radio" id="medium-thin" name="crust" value="thin-12in"> Medium (12")</label></li>
+            <li class="list-group-item"><label for="large-thin"><input type="radio" id="large-thin" name="crust" value="thin-14in"> Large (14")</label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="crust-next row m-0">
+        <div class="column bg-body-secondary p-0 d-flex">
+          <a id="next-btn-cheese-sauce" class="btn btn-primary m-2" href="#cheese-sauce-2">Next Step ></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cheese-sauce container border border-success p-0 tab-pane fade" id="cheese-sauce-2" role="tabpanel"
+         aria-labelledby="cheese-tab" tabindex="0">
+      <div class="cheese-sauce-alert bg-success p-2 text-light">Choose Cheese and Sauce</div>
+      <div class="row m-2">
+        <div class="cheese-dropdown column card p-0">
+          <div class="card-header cheese">
+            Cheese
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">How Much?</li>
+            <div class="cheese dropdown p-2">
+              <button class="btn d-flex btn-secondary dropdown-toggle bg-light text-dark w-100 align-items-center"
+                      type="button" data-bs-toggle="dropdown" aria-expanded="false"> Cheese Amount
+              </button>
+              <ul class="dropdown-menu w-100">
+                <li><a class="dropdown-item active" href="#" aria-current="true">Normal</a></li>
+                <li><a class="dropdown-item" href="#">Extra Cheese</a></li>
+                <li><a class="dropdown-item" href="#">Less Cheese</a></li>
+              </ul>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="row m-2">
+        <div class="cheese-dropdown column card p-0">
+          <div class="card-header cheese">
+            Cheese
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">What Type?</li>
+            <div class="sauce dropdown p-2">
+              <button class="btn d-flex btn-secondary dropdown-toggle bg-light text-dark w-100 align-items-center"
+                      type="button" data-bs-toggle="dropdown" aria-expanded="false"> Sauce Choice
+              </button>
+              <ul class="dropdown-menu w-100">
+                <li><a class="dropdown-item active" href="#" aria-current="true">Tomato</a></li>
+                <li><a class="dropdown-item" href="#">Alfredo</a></li>
+                <li><a class="dropdown-item" href="#">Pesto</a></li>
+                <li><a class="dropdown-item" href="#">No Sauce</a></li>
+              </ul>
+            </div>
+          </ul>
+          <div class="cheese-dropdown p-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">How Much?</li>
+              <div class="cheese dropdown p-2">
+                <button class="btn d-flex btn-secondary dropdown-toggle bg-light text-dark w-100 align-items-center"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false"> Sauce Amount
+                </button>
+                <ul class="dropdown-menu w-100">
+                  <li><a class="dropdown-item active" href="#" aria-current="true">Normal</a></li>
+                  <li><a class="dropdown-item" href="#">Extra Sauce</a></li>
+                  <li><a class="dropdown-item" href="#">Less Sauce</a></li>
+                </ul>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="crust-next row m-0">
+        <div class="column bg-body-secondary p-0 d-flex">
+          <a id="previous-btn-crust" class="btn btn-primary  m-2" href="">< Previous Step</a>
+          <a id="next-btn-toppings" class="btn btn-primary m-2" href="#">Next Step ></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="toppings-choice container border border-success p-0 tab-pane fade" role="tabpanel" id="toppings-3"
+         aria-labelledby="toppings-3-tab" tabindex="0">
+      <div class="toppings-alert bg-success p-2 text-light">Choose your toppings</div>
+      <div class="row m-2 tab-pane">
+        <div class="choose-meats col card p-0 my-2">
+          <div class="card-header meats">
+            Choose Meats
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><label for="pepperoni"><input type="checkbox" id="pepperoni" name="meats" value="pepperoni"> Pepperoni</label>
+            </li>
+            <li class="list-group-item"><label for="bacon"><input type="checkbox" id="bacon" name="meats" value="bacon"> Bacon</label></li>
+            <li class="list-group-item"><label for="ham"><input type="checkbox" id="ham" name="meats" value="ham"> Ham</label></li>
+            <li class="list-group-item"><label for="beef"><input type="checkbox" id="beef" name="meats" value="beef"> Beef</label></li>
+            <li class="list-group-item"><label for="philly-steak"><input type="checkbox" id="philly-steak" name="meats" value="philly-steak">
+              Philly Steak</label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row m-2 tab-pane">
+        <div class="veg-toppings column card p-0 my-2">
+          <div class="card-header veg-top">
+            Choose Non-meats
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><label for="bell-peppers"><input type="checkbox" id="bell-peppers" name="non-meat" value="bell-peppers">
+              Bell Peppers</label></li>
+            <li class="list-group-item"><label for="onion"><input type="checkbox" id="onion" name="non-meat" value="onion"> Onion</label></li>
+            <li class="list-group-item"><label for="tomato"><input type="checkbox" id="tomato" name="non-meat" value="tomato"> Tomato</label></li>
+            <li class="list-group-item"><label for="mushrooms"><input type="checkbox" id="mushrooms" name="non-meat" value="mushrooms">
+              Mushrooms</label></li>
+            <li class="list-group-item"><label for="jalapenos"><input type="checkbox" id="jalapenos" name="non-meat" value="jalapenos">
+              Jalapenos</label></li>
+          </ul>
+          <div class="cheese-previous row m-0">
+            <div class="column bg-body-secondary p-0 d-flex">
+              <a id="previous-btn-cheese-sauce" class="btn btn-primary m-2" href="#cheese-sauce-2">< Previous Step</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>(c) 2023 All rights reserved</p>
+      <div id="social-media-links">
+        <i class="fa-brands fa-facebook"></i><i class="fa-brands fa-x-twitter"></i></i><i class="fa-solid fa-pizza-slice"></i><i class="fa-brands fa-opencart"></i><i class="fa-brands fa-meta"></i>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+      <!--                Attempt to get next button on crust tab to switch to cheese tab -->
+      // let crustToCheese =  document.getElementById('#next-btn-cheese-sauce');
+      // let crust = document.getElementById('#crust-tab');
+      // let cheeseAndSauce = document.getElementById('#cheese-tab');
+      // crustToCheese.addEventListener('click', ()=> {
+      //     crust.setAttribute('aria-selected', 'false');
+      //     crust.classList.remove('active show');
+      //     cheeseAndSauce.setAttribute('aria-selected', 'true');
+      //     cheeseAndSauce.classList.add('active show');
+      //
+      // });
+    </script>
+</body>
+
+</html>
