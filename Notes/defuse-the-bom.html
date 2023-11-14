@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Defuse the BOM</title>
+</head>
+<body>
+
+<h2 id="message">This BOM will self destruct in <span id="timer">5</span> seconds...</h2>
+<button id="defuser">Defuse the BOM</button>
+
+<script>
+    (function() {
+        "use strict";
+
+        var detonationTimer = 5;
+        var colors = ["red", "white", "blue"];
+        var colorIndex = 0;
+
+        // TODO: This function needs to be called once every second
+        function updateTimer() {
+            if (detonationTimer == 0) {
+                alert('EXTERMINATE!');
+                document.body.innerHTML = 'BOOM!';
+            } else if (detonationTimer > 0) {
+                document.getElementById('timer').innerHTML = detonationTimer;
+            }
+
+            detonationTimer--;
+        }
+
+        var intervalId = setInterval(updateTimer, 1000);
+
+        // TODO: When this function runs, it needs to
+        // cancel the interval/timeout for updateTimer()
+        function changeColor() {
+            document.body.style.backgroundColor = colors[colorIndex];
+            colorIndex = (colorIndex + 1) % colors.length;
+        }
+
+        var colorIntervalId = setInterval(changeColor, 100);
+
+        function defuseTheBOM() {
+            clearInterval(intervalId);
+            clearInterval(colorIntervalId);
+            document.body.style.backgroundColor = 'green';
+            document.getElementById('message').textContent = 'You Are Safe';
+        }
+
+        // Don't modify anything below this line!
+        //
+        // This causes the defuseTheBOM() function to be called
+        // when the "defuser" button is clicked.
+        // We will learn about events in the DOM lessons
+        var defuser = document.getElementById('defuser');
+        defuser.addEventListener('click', defuseTheBOM);
+    })();
+</script>
+</body>
+</html>
