@@ -1,9 +1,15 @@
-#profile-card {
-    background-color: bisque;
-    width: 300px;
+body {
+    background-color: maroon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    border: 3px solid black;
+    background-color: beige;
     padding: 20px;
-    text-align: center;
-    text-wrap: unset;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin: auto;
+    box-sizing: border-box;
 }

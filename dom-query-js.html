@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>DOM: Query and Modify</title>
-    <link rel="stylesheet" href="css/dom-query.css">
+        <link rel="stylesheet" href="css/dom-query.css">
+    <style>
+        h1 {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+
 <div id="card-container">
     <div id="profile-card">
     <h1 id="main-header">Hello World!</h1>
@@ -32,37 +39,135 @@
     <button id="btn4">Change Sub Paragraph Text</button>
     </div>
 </div>
-<!--<script>-->
-<!--    "use strict";-->
-<!--    // Get the main header element by id-->
-<!--    const mainHeader = document.getElementById("main-header");-->
+<script>
+    // Select the h1 element
+    const mainHeader = document.getElementById("main-header");
 
-<!--    // Set inner html of mainHeader to "JavaScript is Cool"-->
-<!--    mainHeader.innerHTML = "JavaScript is Cool";-->
+    // Function to change the background color
+    function changeBackgroundColor() {
+        mainHeader.style.backgroundColor = "lightblue";
+    }
 
-<!--    // Get the sub header element by id-->
-<!--    const subHeader = document.getElementById("sub-header");-->
+    // Add a click event listener to the h1 element
+    mainHeader.addEventListener("click", changeBackgroundColor);
 
-<!--    // Set the text color of subHeader to blue-->
-<!--    subHeader.style.color = "blue";-->
+    // Select all paragraph elements
+    let paragraphs = document.querySelectorAll('p');
 
-<!--    // Get all list items-->
-<!--    const listItems = document.getElementsByTagName("li");-->
+    // Loop through all paragraph elements
+    for (let i = 0; i < paragraphs.length; i++) {
+        // Add a 'dblclick' event listener to each paragraph
+        paragraphs[i].addEventListener('dblclick', function() {
+            // Change the font size to 18px when the paragraph is double-clicked
+            this.style.fontSize = '18px';
+        });
+    }
 
-<!--    // Set text color on every other list item to grey-->
-<!--    for(let i = 0; i < listItems.length; i+=2) {-->
-<!--        listItems[i].style.color = "grey";-->
-<!--    }-->
+    // Get all the li elements
+    var listItems = document.getElementsByTagName('li');
 
-<!--    // Set text color of li with dbid = 1 to blue-->
-<!--    document.querySelector('[data-dbid="1"]').style.color = "blue";-->
+    // Loop through each li element
+    for (var i = 0; i < listItems.length; i++) {
+        // Add mouseover event listener
+        listItems[i].addEventListener('mouseover', function(event) {
+            event.target.style.color = 'red';
+        });
 
-<!--    // Get all elements with class name sub-paragraph-->
-<!--    const subParagraphs = document.getElementsByClassName("sub-paragraph");-->
-
-<!--    // Change the text in the first sub paragraph to "Mission Accomplished!"-->
-<!--    subParagraphs[0].innerHTML = "Mission Accomplished!";-->
-<!--</script>-->
-<script src="js/dom-query.js"></script>
+        // Add mouseout event listener
+        listItems[i].addEventListener('mouseout', function(event) {
+            event.target.style.color = 'black';
+        });
+    }
+</script>
+<script src="js/dom-query-events.js"></script>
+</div>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>DOM: Query and Modify</title>-->
+<!--    <link rel="stylesheet" href="css/master-styles.css">-->
+<!--    <link rel="stylesheet" href="css/exercise-styles.css">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<h1 id="main-header">Hello World!</h1>-->
+<!--<ul>-->
+<!--    <li data-dbid="1">Item 1</li>-->
+<!--    <li data-dbid="2">Item 2</li>-->
+<!--    <li data-dbid="3">Item 3</li>-->
+<!--    <li data-dbid="4">Item 4</li>-->
+<!--    <li data-dbid="5">Item 5</li>-->
+<!--</ul>-->
+<!--<h2 id="sub-header">Hello Again.</h2>-->
+<!--<p class="sub-paragraph">-->
+<!--    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do-->
+<!--    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim-->
+<!--    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut-->
+<!--    aliquip ex ea commodo consequat. Duis aute irure dolor in-->
+<!--    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla-->
+<!--    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in-->
+<!--    culpa qui officia deserunt mollit anim id est laborum.-->
+<!--</p>-->
+<!--<div>-->
+<!--    <button id="btn-1">Change 1</button>-->
+<!--    <button id="btn-2">Change 2</button>-->
+<!--    <button id="btn-3">Change 3</button>-->
+<!--    <button id="btn-4">Change 4</button>-->
+<!--</div>-->
+<!--<script>-->
+<!--    "use strict";-->
+<!--    const button1 = document.querySelector("#btn-1");-->
+<!--    const button2 = document.querySelector("#btn-2");-->
+<!--    const button3 = document.querySelector("#btn-3");-->
+<!--    const button4 = document.querySelector("#btn-4");-->
+
+<!--    // TODO: Uncomment next line and get the main header element by id-->
+<!--    const mainHeader = document.querySelector("#main-header");-->
+
+<!--    // TODO: Set inner html of mainHeader to "JavaScript is Cool"-->
+<!--    button1.addEventListener("click", () => {-->
+<!--        mainHeader.innerHTML = "JavaScript is Cool";-->
+<!--    })-->
+
+<!--    // TODO: Uncomment the next line and get the sub header element by id-->
+<!--    const subHeader = document.getElementById("sub-header");-->
+
+<!--    // TODO: Set the text color of subHeader to blue-->
+<!--    button2.addEventListener("click", () => {-->
+<!--        subHeader.style.color = "blue";-->
+<!--    });-->
+
+<!--    // TODO: Uncomment the next line and get all list items-->
+<!--    const listItems = document.querySelectorAll("li");-->
+
+<!--    // TODO: Set text color on every other list item to grey-->
+<!--    // TODO: Set text color of li with dbid = 1 to blue-->
+<!--    button3.addEventListener("click", () => {-->
+<!--        for (let i = 0; i < listItems.length; i++) {-->
+<!--            if (i % 2 !== 0) {-->
+<!--                listItems[i].style.color = "grey";-->
+<!--            }-->
+
+<!--            if (listItems[i].dataset.dbid === "1") {-->
+<!--                listItems[i].style.color = "orangered";-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+
+<!--    // document.querySelector('li[data-dbid="1"]').style.color = 'blue';-->
+
+<!--    // TODO: Uncomment the next line and get all elements with class name sub-paragraph-->
+<!--    const subParagraphs = document.querySelectorAll(".sub-paragraph");-->
+
+<!--    // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"-->
+<!--    button4.addEventListener("click", () => {-->
+<!--        subParagraphs[0].innerText = "Mission Accomplished!";-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
