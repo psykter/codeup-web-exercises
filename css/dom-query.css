@@ -1,0 +1,10 @@
+#profile-card {
+    background-color: lightgrey;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    text-wrap: ;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    margin-top: 50px;
+}
