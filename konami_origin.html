@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Konami Code</title>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<script>
+  "use strict";
+
+  document.addEventListener("keyup", event => console.log(event.key) );
+
+  // Event listener added to the document that listens for the 'keydown' event.
+  document.addEventListener('keydown', keyHandler, false);
+
+  // The keyHandler function should log the key that was pressed.
+  var keyHandler = function (event) {
+    if (event.key === pattern[counter]) {
+      counter++;
+    } else {
+      counter = 0;
+    }
+    if (counter === pattern.length) {
+      alert("You have added 30 lives!");
+      document.body.style.backgroundColor = "red";
+    }
+  };
+
+  // Define the Konami Code sequence and track how many keys in the sequence have been successfully pressed.
+  var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  var counter = 0;
+
+
+
+</script>
+</body>
+</html>

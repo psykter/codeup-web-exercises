@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Asteroids</title>
+    <style>
+        #gameCanvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        #lives-container {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+<canvas id="gameCanvas" width="900" height="700"></canvas>
+
+<script>
+    "use strict";
+
+    // Define the Konami Code sequence and track how many keys in the sequence have been successfully pressed.
+    var pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    var counter = 0;
+
+    var keyHandler = function (event) {
+        if (event.key === pattern[counter]) {
+            counter++;
+        } else {
+            counter = 0;
+        }
+        if (counter === pattern.length) {
+            lives = 30; // Update the game's lives to 30
+            alert("You have added 30 lives!");
+            document.body.style.backgroundColor = "red"; // Change the background color
+        }
+    };
+
+    // Event listener added to the document that listens for the 'keydown' event.
+    document.addEventListener('keydown', keyHandler, false);
+
+    document.addEventListener("keyup", event => console.log(event.key) );
+</script>
+<script src="script.js"></script>
+</body>
+
+</html>
