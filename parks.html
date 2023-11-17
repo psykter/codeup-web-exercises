@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parks</title>
+    <script>
+        function addEventListeners() {
+            var highlightBtns = document.getElementsByClassName('highlight-btn');
+            for (var i = 0; i < highlightBtns.length; i++) {
+                highlightBtns[i].addEventListener('click', function() {
+                    var ul = this.parentElement;
+                    var lastLi = ul.lastElementChild.previousElementSibling;
+                    lastLi.style.backgroundColor = 'yellow';
+                });
+            }
+        }
+
+        window.onload = addEventListeners;
+    </script>
+</head>
+<body>
+
+<h1>National Parks FAQ</h1>
+
+<!-- Existing FAQ content -->
+
+<!-- New content: National parks and facts -->
+<h3>Yellowstone National Park</h3>
+<ul>
+    <li>How many people visit Yellowstone National Park? <br>3.29 million visitors in 2022</li>
+    <li>How old is Yellowstone National Park? <br> Since March 1, 1872</li>
+    <li>How many people are employed at Yellowstone National Park? <br>734 permanent staff and seasonally employed at Yellowstone.</li>
+    <li>What types of jobs are available at Yellowstone National Park?<br>Law enforcement, Tour guides, Bussing tables, Checking guests into hotels, Serving food.</li>
+    <button class="highlight-btn">Highlight Last Fact</button>
+</ul>
+
+<h3>Yosemite National Park</h3>
+<ul>
+    <<li>How many people visit Yellowstone National Park? <br>3.29 million visitors in 2022</li>
+    <li>How old is Yellowstone National Park? <br> Since March 1, 1872</li>
+    <li>How many people are employed at Yellowstone National Park? <br>734 permanent staff and seasonally employed at Yellowstone.</li>
+    <li>What types of jobs are available at Yellowstone National Park?<br>Law enforcement, Tour guides, Bussing tables, Checking guests into hotels, Serving food.</li>
+    <button class="highlight-btn">Highlight Last Fact</button>
+</ul>
+
+<h3>Grand Canyon National Park</h3>
+<ul>
+    <li>How many people visit Yellowstone National Park? <br>3.29 million visitors in 2022</li>
+    <li>How old is Yellowstone National Park? <br> Since March 1, 1872</li>
+    <li>How many people are employed at Yellowstone National Park? <br>734 permanent staff and seasonally employed at Yellowstone.</li>
+    <li>What types of jobs are available at Yellowstone National Park?<br>Law enforcement, Tour guides, Bussing tables, Checking guests into hotels, Serving food.</li>
+    <button class="highlight-btn">Highlight Last Fact</button>
+</ul>
+
+</body>
+</html>

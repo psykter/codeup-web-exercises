@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Traversal</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    main > div {
+      border: 1px solid white;
+      padding: 1em;
+      margin: 1em;
+    }
+    li {
+      cursor: default;
+    }
+    button[data-border='on'] {
+      background: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <h1>Parks List</h1>
+  </header>
+  <main>
+    <div id="national-parks-div">
+      <h3 id="national-parks-heading">National Parks</h3>
+      <ul id="national-parks">
+        <li>Arches</li>
+        <li>Badlands</li>
+        <li>Carlsbad Caverns</li>
+        <li>Denali</li>
+        <li>Everglades</li>
+      </ul>
+      <button class="border-btn" data-border="off">
+        <i class="bi bi-toggles"></i>
+        Toggle Border
+      </button>
+    </div>
+    <div id="state-parks-div">
+      <h3 id="state-parks-heading">State Parks of Texas</h3>
+      <ul id="state-parks-texas">
+        <li>Abilene</li>
+        <li>Big Bend</li>
+        <li>Choke Canyon</li>
+        <li>Davis Mountains</li>
+        <li>Enchanted Rock</li>
+      </ul>
+      <button class="border-btn" data-border="off">
+        <i class="bi bi-toggles"></i>
+        Toggle Border
+      </button>
+    </div>
+  </main>
+  <script>
+
+    "use strict";
+
+    // We can explore various parts of the DOM with traversal...
+    document.querySelector('body')
+        .style.border = 'black 2px dotted';
+
+    // =============== EXAMPLE USE CASES
+
+    /*
+        When a list item is hovered over, make it underlined and make
+        all list items in the list bold.
+     */
+
+    const lis = document.querySelectorAll('li');
+
+    for (let li of lis) {
+      li.addEventListener('mouseenter', (e) => {
+        e.currentTarget.style.textDecoration = 'underline';
+        e.currentTarget.parentElement.style.fontWeight = 'bold';
+      });
+      li.addEventListener('mouseleave', (e) => {
+        e.currentTarget.style.textDecoration = 'none';
+        e.currentTarget.parentElement.style.fontWeight = 'normal';
+      });
+    }
+
+
+    /*
+        When a border button is clicked, toggle the border around
+        the parent div.
+     */
+
+    const btns = document.querySelectorAll('.border-btn');
+
+    for (let btn of btns) {
+      btn.addEventListener('click', (e) => {
+        let btnNode = e.currentTarget;
+        if (btnNode.getAttribute('data-border') === 'off') {
+          btnNode.setAttribute('data-border', 'on');
+          btnNode.parentElement.style.border = '1px solid black';
+        } else {
+          btnNode.setAttribute('data-border', 'off');
+          btnNode.parentElement.style.border = '1px solid white';
+        }
+      });
+    }
+
+  </script>
+</div>
+</body>
+</html>
