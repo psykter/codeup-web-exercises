@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>National Parks</title>
+
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .card {
+            padding: 20px;
+            /* Add other styles as needed */
+        }
+
+        main > div {
+            border: 1px solid white;
+            padding: 1em;
+            margin: 1em;
+        }
+        li {
+            cursor: default;
+        }
+        button[data-border='on'] {
+            background: black;
+            color: white;
+        }
+
+        .wrapper {
+            border: 5px dashed red;
+        }
+    </style>
+
+</head>
+<body>
+<div class="wrapper">
+    <!-- Card: National parks -->
+    <div class="card parks">
+
+<h1>National Parks FAQ's</h1>
+
+<!-- New content: National parks and facts -->
+<h3>Yellowstone National Park</h3>
+<ul>
+    <li>How many people visit Yellowstone National Park? <br>3.29 million visitors in 2022</li>
+    <li>How old is Yellowstone National Park? <br> Since March 1, 1872</li>
+    <li>How many people are employed at Yellowstone National Park? <br>734 permanent staff and seasonally employed at Yellowstone.</li>
+    <li>What types of jobs are available at Yellowstone National Park?<br>Law enforcement, Tour guides, Bussing tables, Checking guests into hotels, Serving food.</li>
+    <button class="highlight-btn">Highlight Last Fact</button>
+</ul>
+
+<h3>Yosemite National Park</h3>
+<ul>
+    <<li>How many people visit Yellowstone National Park? <br>3.29 million visitors in 2022</li>
+    <li>How old is Yellowstone National Park? <br> Since March 1, 1872</li>
+    <li>How many people are employed at Yellowstone National Park? <br>734 permanent staff and seasonally employed at Yellowstone.</li>
+    <li>What types of jobs are available at Yellowstone National Park?<br>Law enforcement, Tour guides, Bussing tables, Checking guests into hotels, Serving food.</li>
+    <button class="highlight-btn">Highlight Last Fact</button>
+</ul>
+
+<h3>Grand Canyon National Park</h3>
+<ul>
+    <li>How many people visit Yellowstone National Park? <br>3.29 million visitors in 2022</li>
+    <li>How old is Yellowstone National Park? <br> Since March 1, 1872</li>
+    <li>How many people are employed at Yellowstone National Park? <br>734 permanent staff and seasonally employed at Yellowstone.</li>
+    <li>What types of jobs are available at Yellowstone National Park?<br>Law enforcement, Tour guides, Bussing tables, Checking guests into hotels, Serving food.</li>
+    <button class="highlight-btn">Highlight Last Fact</button>
+</ul>
+    </div>
+    <div style="text-align: center;">
+        <button class="border-btn" data-border="off">
+            <i class="bi bi-toggles"></i>
+            Toggle Border
+        </button>
+    </div>
+    </div>
+<script>
+
+    // highlight btn
+    function addEventListeners() {
+        var highlightBtns = document.getElementsByClassName('highlight-btn');
+        for (var i = 0; i < highlightBtns.length; i++) {
+            highlightBtns[i].addEventListener('click', function() {
+                var ul = this.parentElement;
+                var lastLi = ul.lastElementChild.previousElementSibling;
+                lastLi.classList.toggle('highlight');
+            });
+        }
+    }
+
+    window.onload = addEventListeners;
+
+    // toggle
+    const btns = document.querySelectorAll('.border-btn');
+    const wrapper = document.querySelector('.wrapper');
+
+    for (let btn of btns) {
+        btn.addEventListener('click', (e) => {
+            let btnNode = e.currentTarget;
+            if (btnNode.getAttribute('data-border') === 'off') {
+                btnNode.setAttribute('data-border', 'on');
+                wrapper.classList.add('wrapper');
+            } else {
+                btnNode.setAttribute('data-border', 'off');
+                wrapper.classList.remove('wrapper');
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Traversal</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        main > div {
+            border: 1px solid white;
+            padding: 1em;
+            margin: 1em;
+        }
+        li {
+            cursor: default;
+        }
+        button[data-border='on'] {
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <script>
+
+        "use strict";
+
+        // We can explore various parts of the DOM with traversal...
+        document.querySelector('body')
+            .style.border = 'black 2px dotted';
+
+        // =============== EXAMPLE USE CASES
+
+        /*
+            When a list item is hovered over, make it underlined and make
+            all list items in the list bold.
+         */
+
+        const lis = document.querySelectorAll('li');
+
+        for (let li of lis) {
+            li.addEventListener('mouseenter', (e) => {
+                e.currentTarget.style.textDecoration = 'underline';
+                e.currentTarget.parentElement.style.fontWeight = 'bold';
+            });
+            li.addEventListener('mouseleave', (e) => {
+                e.currentTarget.style.textDecoration = 'none';
+                e.currentTarget.parentElement.style.fontWeight = 'normal';
+            });
+        }
+
+
+        /*
+            When a border button is clicked, toggle the border around
+            the parent div.
+         */
+
+        const btns = document.querySelectorAll('.border-btn');
+
+        for (let btn of btns) {
+            btn.addEventListener('click', (e) => {
+                let btnNode = e.currentTarget;
+                if (btnNode.getAttribute('data-border') === 'off') {
+                    btnNode.setAttribute('data-border', 'on');
+                    btnNode.parentElement.style.border = '1px solid black';
+                } else {
+                    btnNode.setAttribute('data-border', 'off');
+                    btnNode.parentElement.style.border = '1px solid white';
+                }
+            });
+        }
+
+    </script>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Lessons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/jquery-essential-methods.css">
+    <style>
+        .picture-frames-container {
+            display: flex;
+        }
+
+        .picture-frame {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 10px solid #ccc;
+            background-color: #ccc;
+            width: 300px;
+            height: 200px;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .picture-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .picture-frame button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+<div class="page-wrapper">
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Codeup</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">One</a></li>
+                            <li><a class="dropdown-item" href="#">Two</a></li>
+                            <li><a class="dropdown-item" href="#">Three</a></li>
+                            <li><a class="dropdown-item" href="#">Four</a></li>
+                            <li><a class="dropdown-item" href="#">Five</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Other Numbers</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <button id="dark-mode-button" class="btn btn-outline-success">Dark Mode</button>
+            </div>
+        </div>
+    </nav>
+
+    <hr>
+
+    <header style="padding: 40px;">
+        <div class="container" style="padding: 20px;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="picture-frames-container">
+                        <div class="picture-frame" id="left-frame">
+                            <img src="../img/MonaLisa.jpg" height="500" width="386" alt="Image 1">
+                            <br>
+                            <button class="swap-button">Swap</button>
+                        </div>
+
+                        <div class="picture-frame" id="center-frame">
+                            <img src="../img/Picaso.jpg" height="898" width="679" alt="Image 2">
+                            <br>
+                            <button class="swap-button">Swap</button>
+                        </div>
+
+                        <div class="picture-frame" id="right-frame">
+                            <img src="../img/Scream.jpg" height="800" width="650" alt="Image 3">
+                            <br>
+                            <button class="swap-button">Swap</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </header>
+
+
+    <hr>
+
+
+    <div class="page-wrapper container mb-5 d-flex flex-column align-items-center gap-5">
+        <h1 class="mt-5">Attributes and CSS</h1>
+
+        <!--    HTML Article-->
+        <article class="html container d-flex flex-column align-items-center gap-2">
+            <h2>Demonstrating .html() Method</h2>
+            <div class="d-flex justify-center gap-2">
+                <button id="html-button">Change HTML</button>
+                <button id="html-append-button">Append HTML</button>
+            </div>
+            <!--        JS Equivalent Buttons-->
+            <div class="d-flex justify-center gap-2">
+                <button id="js-html-button">Change HTML with JS</button>
+                <button id="js-html-append-button">Append HTML with JS</button>
+            </div>
+        </article>
+
+        <!--    CSS Article-->
+        <article class="css container d-flex flex-column align-items-center gap-2">
+            <h2>Demonstrating .css() Method</h2>
+            <div class="bg-primary-subtle"></div>
+            <button id="css-button">Change CSS</button>
+            <!--        JS Equivalent Buttons-->
+            <button id="js-css-button">Change CSS with JS</button>
+        </article>
+
+        <!--    Class Methods Article-->
+        <article class="class container d-flex flex-column align-items-center gap-2">
+            <h2>Demonstrating .addClass(), .removeClass(), toggleClass() Methods</h2>
+            <div class="kurt beau" style="height: 240px; width: 240px;"></div>
+            <div class="d-flex justify-center gap-2">
+                <button id="add-class-button">Add Class</button>
+                <button id="remove-class-button">Remove Class</button>
+                <button id="toggle-class-button">Toggle Class</button>
+            </div>
+            <!--        JS Equivalent Buttons-->
+            <div class="d-flex justify-center gap-2">
+                <button id="js-add-class-button">Add Class with JS</button>
+                <button id="js-remove-class-button">Remove Class with JS</button>
+                <button id="js-toggle-class-button">Toggle Class with JS</button>
+            </div>
+        </article>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+<script src="../js/jquery-essential-methods.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.swap-button').on('click', function () {
+            var $clickedFrame = $(this).closest('.picture-frame');
+            var $centerFrame = $('#center-frame');
+            var $centerImage = $centerFrame.find('img');
+            var $clickedImage = $clickedFrame.find('img');
+            var tempSrc = $centerImage.attr('src');
+            $centerImage.attr('src', $clickedImage.attr('src'));
+            $clickedImage.attr('src', tempSrc);
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
