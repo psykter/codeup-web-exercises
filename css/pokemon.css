@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3974bb;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3974bb;
+    padding: 10px;
+}
+
+.banner label {
+    color: white;
+    margin-right: 10px;
+}
+
+main {
+    padding: 20px;
+}
+
+select {
+    width: 200px; /* Adjust the width as needed */
+}
+

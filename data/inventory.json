@@ -1,0 +1,95 @@
+[
+  {
+    "title": "Hammer 18oz",
+    "quantity": 25,
+    "categories": [
+      "tool"
+    ],
+    "price": 25
+  },
+  {
+    "title": "Drill",
+    "quantity": 5,
+    "categories": [
+      "tool",
+      "powered"
+    ],
+    "price": 100
+  },
+  {
+    "title": "Mower",
+    "quantity": 5,
+    "categories": [
+      "tool",
+      "gas",
+      "outdoor"
+    ],
+    "price": 200
+  },
+  {
+    "title": "Screwdrivers",
+    "quantity": 25,
+    "categories": [
+      "tool"
+    ],
+    "price": 10
+  },
+  {
+    "title": "Wrench Set",
+    "quantity": 15,
+    "categories": [
+      "tool"
+    ],
+    "price": 30
+  },
+  {
+    "title": "Circular Saw",
+    "quantity": 8,
+    "categories": [
+      "tool",
+      "powered"
+    ],
+    "price": 120
+  },
+  {
+    "title": "Garden Rake",
+    "quantity": 20,
+    "categories": [
+      "tool",
+      "outdoor"
+    ],
+    "price": 15
+  },
+  {
+    "title": "Hammer 20oz",
+    "quantity": 25,
+    "categories": [
+      "tool"
+    ],
+    "price": 35
+  }, {
+  "title": "Drill replacement set",
+  "quantity": 5,
+  "categories": [
+    "tool",
+    "powered"
+  ],
+  "price": 50
+}, {
+  "title": "Mower Electric",
+  "quantity": 5,
+  "categories": [
+    "tool",
+    "gas",
+    "outdoor"
+  ],
+  "price": 500
+}, {
+  "title": "Screwdrivers assorted",
+  "quantity": 25,
+  "categories": [
+    "tool"
+  ],
+  "price": 40
+}
+]
