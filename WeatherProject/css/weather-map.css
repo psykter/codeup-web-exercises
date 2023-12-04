@@ -1,0 +1,223 @@
+@import "https://fonts.googleapis.com/css?family=Lato:300,400,900";
+
+/* Additional CSS for layout */
+main {
+    margin-top: 20px;
+}
+
+body {
+    line-height: 1;
+    font-family: Lato, sans-serif;
+    background-color: #1b1b1c;
+    font-size: 100%;
+    vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    padding: 6.5em 1em;
+    display: block;
+}
+
+.custom-card {
+    width: 80px; /* Set your desired width */
+    height: 80px; /* Set your desired height */
+    background-color: #656d78; /* Set your desired background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-card img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%; /* Make the image fill the container */
+}
+
+.card:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+}
+
+.card-night {
+    background-color: #000;
+}
+
+.card-rain {
+    background-color: #41ba9c;
+}
+
+.card-snow {
+    background-color: #ccd1d9;
+}
+
+/*.card-storm {*/
+/*    background-color: #656d78;*/
+/*}*/
+
+.card-sunny {
+    background-color: #4fc1e9;
+}
+
+.card-storm {
+    width: 80px; /* Set your desired width */
+    height: 80px; /* Set your desired height */
+    background-color: #656d78; /* Set your desired background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-storm img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.container {
+    max-width: 100%; /* Adjust if needed */
+    pointer-events: none;
+}
+
+.forecast {
+    display: flex;
+    gap: 10px;
+}
+
+#forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #2b2b2b;
+    padding: 20px;
+    color: #fff;
+}
+
+.forecast-day {
+    width: 210px;
+    margin: 10px;
+    background-color: #3c3b3d;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grid-item {
+    width: 210px;
+    margin: 10px;
+    background-color: #3c3b3d;
+    overflow: hidden;
+    display: flex; /* Use flexbox */
+    flex-direction: row; /* Arrange children horizontally */
+}
+
+header {
+    margin: 20px 0;
+    text-align: center; /* Center align header */
+}
+
+header h1 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #424242;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #2b2b2b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: #2b2b2b;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+main {
+    margin-top: 20px;
+}
+
+#map {
+    width: 100%;
+    height: 600px; /* Adjust the height as needed */
+    z-index: 1;
+}
+
+.map-container {
+    margin-top: 20px;
+    height: calc(100vh - 120px); /* Adjust the height as needed */
+}
+
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+#marker {
+    background-image: url('../alamo.jpeg');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#saved-forecasts-container {
+    margin-top: 20px;
+}
+
+#saved-forecasts {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#saved-forecasts li {
+    margin: 10px;
+    background-color: #3c3b3d;
+    overflow: hidden;
+}
+
+.status {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 10px; /* Add padding for better spacing */
+    color: #808080;
+    text-align: center;
+}
+
+.status p:first-child {
+    font-weight: 600;
+    color: #FFF;
+}
+.status {
+    flex-grow: 1;
+    padding: 10px;
+    color: #808080;
+    text-align: center;
+}
