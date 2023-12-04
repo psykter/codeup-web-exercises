@@ -24,6 +24,67 @@ document.addEventListener('DOMContentLoaded', function() {
         let forecastLocationName = document.querySelector('#forecastName');
         forecastLocationName.innerText = `San Antonio, Texas`
 
+// Inside your IIFE, add the following code
+
+// Function to handle city search autocomplete
+        function handleAutocomplete() {
+            const citySearchInput = document.getElementById('input-find');
+            const suggestionsDropdown = document.getElementById('autocomplete-suggestions');
+
+            // Event listener for input changes
+            citySearchInput.addEventListener('input', () => {
+                const searchText = citySearchInput.value.trim();
+
+                // Make a request to Mapbox Geocoding API for autocomplete suggestions
+                fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchText}.json?access_token=${MAPBOX_TOKEN}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear previous suggestions
+                        suggestionsDropdown.innerHTML = '';
+
+                        // Update suggestions dropdown or create a new one
+                        for (let i = 0; i < Math.min(5, data.features.length); i++) {
+                            const suggestion = document.createElement('div');
+                            suggestion.className = 'autocomplete-suggestion';
+                            suggestion.textContent = data.features[i].place_name;
+
+                            // Event listener for suggestion click
+                            suggestion.addEventListener('click', () => {
+                                citySearchInput.value = data.features[i].place_name;
+                                suggestionsDropdown.innerHTML = ''; // Clear suggestions
+                                // You can also update the weather based on the selected suggestion here
+                            });
+
+                            suggestionsDropdown.appendChild(suggestion);
+                        }
+                    })
+                    .catch(error => console.error(error));
+            });
+        }
+
+// Call the autocomplete function
+        handleAutocomplete();
+
+// Your existing code for Find and Home buttons
+        const formFind = document.getElementById('form-find');
+        const btnHome = document.getElementById('btn-home');
+
+// Event listener for form submission
+        formFind.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const searchText = document.getElementById('input-find').value.trim();
+
+            // You can add the logic to update the weather based on the entered city (searchText) here
+            console.log(`Searching for city: ${searchText}`);
+        });
+
+// Event listener for Home button click
+        btnHome.addEventListener('click', () => {
+            // You can add the logic to reset the weather to the default location or perform any other action
+            console.log('Home button clicked');
+        });
+
+
         function runAjax() {
             $.ajax({
                 url: URL,
@@ -48,12 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
         runAjax();
 
         function showDatesAndTemps(minMaxTemps) {
+            // Display current date and temperature on the first card (Day1)
             Day1.lastElementChild.firstElementChild.innerText = `${minMaxTemps[0].date}:\n\n ${parseInt(minMaxTemps[0].max)} ℉`;
-            Day2.lastElementChild.firstElementChild.innerText = `${minMaxTemps[1].date}:\n\n ${parseInt(minMaxTemps[1].max)} ℉`;
-            Day3.lastElementChild.firstElementChild.innerText = `${minMaxTemps[2].date}:\n\n ${parseInt(minMaxTemps[2].max)} ℉`;
-            Day4.lastElementChild.firstElementChild.innerText = `${minMaxTemps[3].date}:\n\n ${parseInt(minMaxTemps[3].max)} ℉`;
-            Day5.lastElementChild.firstElementChild.innerText = `${minMaxTemps[4].date}:\n\n ${parseInt(minMaxTemps[4].max)} ℉`;
+
+            // Display the next 4 days on the remaining cards (Day2 to Day5)
+            Day2.lastElementChild.firstElementChild.innerHTML = `${minMaxTemps[1].date}:<br>Min: ${parseInt(minMaxTemps[1].min)} ℉<br>Max: ${parseInt(minMaxTemps[1].max)} ℉`;
+            Day3.lastElementChild.firstElementChild.innerHTML = `${minMaxTemps[2].date}:<br>Min: ${parseInt(minMaxTemps[2].min)} ℉<br>Max: ${parseInt(minMaxTemps[2].max)} ℉`;
+            Day4.lastElementChild.firstElementChild.innerHTML = `${minMaxTemps[3].date}:<br>Min: ${parseInt(minMaxTemps[3].min)} ℉<br>Max: ${parseInt(minMaxTemps[3].max)} ℉`;
+            Day5.lastElementChild.firstElementChild.innerHTML = `${minMaxTemps[4].date}:<br>Min: ${parseInt(minMaxTemps[4].min)} ℉<br>Max: ${parseInt(minMaxTemps[4].max)} ℉`;
         }
+
 
         function showWeather(weatherArray, icons) {
             Day1.lastElementChild.lastElementChild.innerText = weatherArray[0];
@@ -90,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const map = new mapboxgl.Map({
             container: "map",
             style: "mapbox://styles/mapbox/navigation-night-v1",
-            zoom: 5,
+            zoom: 10,
             center: [-98.4916, 29.4252]
         });
         const marker = new mapboxgl.Marker({draggable: true}).setLngLat([-98.4916, 29.4252]).addTo(map);
