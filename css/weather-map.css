@@ -218,7 +218,7 @@ main {
 .status {
     flex-grow: 1; /* Take up remaining space */
     padding: 10px; /* Add padding for better spacing */
-    color: var(--main-color);
+    color: var(--text-color);
     text-align: center;
 }
 
