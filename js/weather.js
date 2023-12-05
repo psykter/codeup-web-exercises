@@ -10,11 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
         function getWeatherURL(lat, lon) {
             return `${OPEN_WEATHER_URL}?lat=${lat}&lon=${lon}&units=imperial&appid=${OPEN_WEATHER_APPID}&units=imperial`;
         }
-
         const WEATHER_COORDINATES = ['29.4260', '-98.4861'];
-
         let URL = getWeatherURL(...WEATHER_COORDINATES);
-
         const Day1 = document.querySelector('.day1');
         const Day2 = document.querySelector('.day2');
         const Day3 = document.querySelector('.day3');
@@ -105,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
             Day4.lastElementChild.firstElementChild.innerHTML = `${minMaxTemps[3].date}:<br>Min: ${parseInt(minMaxTemps[3].min)} ℉<br>Max: ${parseInt(minMaxTemps[3].max)} ℉`;
             Day5.lastElementChild.firstElementChild.innerHTML = `${minMaxTemps[4].date}:<br>Min: ${parseInt(minMaxTemps[4].min)} ℉<br>Max: ${parseInt(minMaxTemps[4].max)} ℉`;
         }
-//      >>>>>>>>>>  Btn Click gets weather and updates map <<<<<<<<<<    //
+//      >>>>>>>>>>  Btn click gets temps and icons on cards <<<<<<<<<<    //
         function showWeather(weatherArray, icons) {
             Day1.lastElementChild.lastElementChild.innerText = weatherArray[0];
             Day1.firstElementChild.firstElementChild.src = `https://openweathermap.org/img/wn/${icons[0]}@4x.png`;
